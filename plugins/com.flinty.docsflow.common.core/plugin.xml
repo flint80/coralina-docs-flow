@@ -1,0 +1,9 @@
+<plugin xmlns="http://xtrip.gridnine.com/spf" id="com.flinty.docsflow.common.core">
+    <parameter id="type" value="COMMON"/>
+    <dependencies>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.common.core"/>
+    </dependencies>
+    <!--<extension point-id="activator">
+        <parameter id="class" value="com.gridnine.docsflow.common.core.activator.DocsFlowCoreCommonActivator"/>
+    </extension>-->
+</plugin>

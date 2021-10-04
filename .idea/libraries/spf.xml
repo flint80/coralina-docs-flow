@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="libraryTable">
+   <library name="spf">
+      <CLASSES>
+         <root url="jar://$PROJECT_DIR$/submodules/jasmine/lib/spf-1.0.jar!/"/>
+      </CLASSES>
+      <JAVADOC/>
+      <SOURCES>
+         <root url="jar://$PROJECT_DIR$/submodules/jasmine/lib/src/spf-1.0-sources.jar!/"/>
+      </SOURCES>
+   </library>
+</component>

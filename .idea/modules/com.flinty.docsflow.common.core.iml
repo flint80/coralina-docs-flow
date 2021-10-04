@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+   <component name="NewModuleRootManager">
+      <output url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.common.core/classes"/>
+      <output-test url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.common.core/classes"/>
+      <content url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.common.core">
+         <sourceFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.common.core/source" isTestSource="false"/>
+         <sourceFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.common.core/source-gen" isTestSource="false" generated="true"/>
+         <excludeFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.common.core/classes"/>
+      </content>
+      <orderEntry type="sourceFolder" forTests="false"/>
+      <orderEntry type="inheritedJdk"/>
+      <orderEntry type="library" name="common" level="project"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.core"/>
+   </component>
+</module>

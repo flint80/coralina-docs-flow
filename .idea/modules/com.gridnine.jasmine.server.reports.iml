@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+   <component name="NewModuleRootManager">
+      <output url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.server.reports/classes"/>
+      <output-test url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.server.reports/classes"/>
+      <content url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.server.reports">
+         <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.server.reports/source" isTestSource="false"/>
+         <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.server.reports/source-gen" isTestSource="false" generated="true"/>
+         <excludeFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.server.reports/classes"/>
+      </content>
+      <orderEntry type="sourceFolder" forTests="false"/>
+      <orderEntry type="inheritedJdk"/>
+      <orderEntry type="library" name="server" level="project"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.core"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.standard"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.reports"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.server.core"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.server.standard"/>
+   </component>
+</module>

@@ -1,0 +1,9 @@
+<plugin xmlns="http://xtrip.gridnine.com/spf" id="com.flinty.docsflow.web.core">
+    <parameter id="type" value="WEB"/>
+    <parameter id="kotlin-output-dir" value="resources/docsflow-core"/>
+    <dependencies>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.web.core"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.web.standard"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.web.antd"/>
+    </dependencies>
+</plugin>

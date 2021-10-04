@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+   <component name="NewModuleRootManager">
+      <output url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.server.core.test/classes"/>
+      <output-test url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.server.core.test/classes"/>
+      <content url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.server.core.test">
+         <sourceFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.server.core.test/source" isTestSource="true"/>
+         <excludeFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.server.core.test/classes"/>
+      </content>
+      <orderEntry type="sourceFolder" forTests="true"/>
+      <orderEntry type="inheritedJdk"/>
+      <orderEntry type="library" name="server" level="project"/>
+      <orderEntry type="library" name="server_test" level="project"/>
+      <orderEntry type="library" name="spf" level="project"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.core"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.standard"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.server.core"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.server.core.test"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.server.standard"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.server.db.h2"/>
+      <orderEntry type="module" module-name="com.flinty.docsflow.common.core"/>
+      <orderEntry type="module" module-name="com.flinty.docsflow.server.core"/>
+   </component>
+</module>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.common.core.iml" filepath="$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.common.core.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.server.core.iml" filepath="$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.server.core.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.server.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.server.core.test.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.server.reports.iml" filepath="$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.server.reports.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.web.core.iml" filepath="$PROJECT_DIR$/.idea/modules/com.flinty.docsflow.web.core.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.core.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.core.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.core.test.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.reports.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.reports.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.spf.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.spf.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.standard.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.common.standard.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.core.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.core.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.core.test.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.db.h2.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.db.h2.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.db.postgres.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.db.postgres.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.reports.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.reports.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.standard.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.standard.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.standard.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.server.standard.test.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.antd.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.antd.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.core.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.core.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.core.test.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.easyui.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.easyui.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.reports.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.reports.iml" group="coralina-docs-flow" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.standard.iml" filepath="$PROJECT_DIR$/.idea/modules/com.gridnine.jasmine.web.standard.iml" group="coralina-docs-flow" />
+    </modules>
+  </component>
+</project>

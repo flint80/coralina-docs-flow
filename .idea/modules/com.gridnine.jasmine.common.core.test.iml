@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+   <component name="NewModuleRootManager">
+      <output url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.common.core.test/classes"/>
+      <output-test url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.common.core.test/classes"/>
+      <content url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.common.core.test">
+         <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.common.core.test/source" isTestSource="true"/>
+         <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.common.core.test/source-gen" isTestSource="false" generated="true"/>
+         <excludeFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.common.core.test/classes"/>
+      </content>
+      <orderEntry type="sourceFolder" forTests="true"/>
+      <orderEntry type="inheritedJdk"/>
+      <orderEntry type="library" name="common" level="project"/>
+      <orderEntry type="library" name="common_test" level="project"/>
+      <orderEntry type="library" name="spf" level="project"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.core"/>
+   </component>
+</module>

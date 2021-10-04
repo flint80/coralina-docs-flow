@@ -1,0 +1,13 @@
+<plugin xmlns="http://xtrip.gridnine.com/spf" id="com.flinty.docsflow.server.core.test">
+    <parameter id="type" value="SERVER_TEST"/>
+    <dependencies>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.common.core"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.common.standard"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.server.core"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.server.core.test"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.server.standard"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.server.db.h2"/>
+        <plugin-dependency plugin-id="com.flinty.docsflow.common.core"/>
+        <plugin-dependency plugin-id="com.flinty.docsflow.server.core"/>
+    </dependencies>
+</plugin>

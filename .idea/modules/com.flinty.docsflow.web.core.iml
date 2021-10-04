@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="4" platform="JavaScript " allPlatforms="JS []" useProjectSettings="false" isTestModule="false" pureKotlinSourceFolders="$MODULE_DIR$/../../plugins/com.flinty.docsflow.web.core/source;/home/avramenko/IdeaProjects/own/coralina-docs-flow/plugins/com.flinty.docsflow.web.core/source-gen">
+        <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
+        <compilerSettings />
+        <compilerArguments>
+          <option name="sourceMap" value="true" />
+          <option name="sourceMapEmbedSources" value="always" />
+          <option name="moduleKind" value="umd" />
+        </compilerArguments>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.web.core/resources/docsflow-core" />
+    <output-test url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.web.core/resources/docsflow-core" />
+    <content url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.web.core">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.web.core/source" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.web.core/source-gen" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/com.flinty.docsflow.web.core/resources/docsflow-core" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" name="web_js" level="project" />
+    <orderEntry type="module" module-name="com.gridnine.jasmine.web.core" />
+    <orderEntry type="module" module-name="com.gridnine.jasmine.web.standard" />
+    <orderEntry type="module" module-name="com.gridnine.jasmine.web.antd" />
+  </component>
+</module>

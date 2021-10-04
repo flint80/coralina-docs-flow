@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="4" platform="JavaScript " allPlatforms="JS []" useProjectSettings="false" isTestModule="false" pureKotlinSourceFolders="$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.standard/source;/home/avramenko/IdeaProjects/own/coralina-docs-flow/submodules/jasmine/plugins/com.gridnine.jasmine.web.standard/source-gen">
+        <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
+        <compilerSettings />
+        <compilerArguments>
+          <option name="sourceMap" value="true" />
+          <option name="sourceMapEmbedSources" value="always" />
+          <option name="moduleKind" value="umd" />
+        </compilerArguments>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.standard/resources/jasmine-standard" />
+    <output-test url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.standard/resources/jasmine-standard" />
+    <content url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.standard">
+      <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.standard/source" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.standard/source-gen" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.standard/resources/jasmine-standard" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" name="web_js" level="project" />
+    <orderEntry type="module" module-name="com.gridnine.jasmine.web.core" />
+  </component>
+</module>
