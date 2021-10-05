@@ -7,7 +7,7 @@
         <plugin-dependency plugin-id="com.gridnine.jasmine.server.standard"/>
         <plugin-dependency plugin-id="com.flinty.docsflow.common.core"/>
     </dependencies>
-<!--    <extension point-id="activator">-->
-<!--        <parameter id="class" value="com.gridnine.jtasks.server.core.activator.JTasksServerCoreActivator"/>-->
-<!--    </extension>-->
+    <extension point-id="activator">
+        <parameter id="class" value="com.flinty.docsflow.server.core.activator.DocsFlowServerCoreActivator"/>
+    </extension>
 </plugin>

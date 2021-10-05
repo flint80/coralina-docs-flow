@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Docs flow: авторизация</title>
+    <style>
+         .label-container{
+            display: table;
+        }
+        .label{
+            font-size: 16px; font-weight: normal; color: #575765;
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            margin: 0 auto;
+            text-align: right;
+        }
+        .textbox {
+  position: relative;
+  border: 1px solid #D3D3D3;
+  background-color: #fff;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  width: 100%;
+  height: 25px
+}
+.textbox-invalid{
+  border: 1px solid red !important;
+ }
+.textbox .textbox-text {
+  font-size: 14px;
+  border: 0;
+  margin: 0;
+  padding: 0 4px;
+  white-space: normal;
+  vertical-align: top;
+  outline-style: none;
+  resize: none;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  height: 100%;
+  width: 100%;
+}
+.button{
+            font-size: 16px; font-weight: normal; color: #575765;
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #bbb;
+            -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  background: -webkit-linear-gradient(top,#ffffff 0,#eeeeee 100%);
+  background: -moz-linear-gradient(top,#ffffff 0,#eeeeee 100%);
+  background: -o-linear-gradient(top,#ffffff 0,#eeeeee 100%);
+  background: linear-gradient(to bottom,#ffffff 0,#eeeeee 100%);
+  height: 25px;
+}
+.button:hover {
+  background: #e2e2e2;
+  color: #000000;
+  border: 1px solid #ccc;
+  filter: none;
+  cursor: pointer;
+}
+    </style>
+</head>
+
+<body>
+    <div style="position: absolute; border: 1px solid  #D3D3D3; 
+        width: 300px; height: 170px; left: 50%; top:50%; 
+        margin-top: -85px;margin-left: -150px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 30px 1fr;">
+        <div style="grid-row: 1; grid-column: 1;
+            padding: 5px; background-image: linear-gradient(rgb(248, 248, 248) 0px, rgb(238, 238, 238) 100%);
+            border-bottom: 1px solid #D3D3D3;
+            font-size: 18px; font-weight: bold; color: #575765;">
+            Авторизация
+        </div>
+        <div style="grid-row: 2; grid-column: 1; 
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: 40px 40px 1fr 40px;">
+           <div style="grid-row: 1;grid-column: 1;" class="label-container">
+               <div class="label">
+                    Логин:
+                </div>
+           </div>
+           <div style="grid-row: 1;grid-column: 2; padding: 7px;">
+                <span class="textbox">
+                    <input id = "loginField" type="text" class="textbox-text" autocomplete="off">
+                </span>
+            </div>
+            <div style="grid-row: 2;grid-column: 1;" class="label-container">
+                <div class="label">
+                     Пароль:
+                 </div>
+            </div>
+            <div style="grid-row: 2;grid-column: 2; padding: 7px;">
+                 <span class="textbox">
+                     <input id = "passwordField" type="password" class="textbox-text"  autocomplete="off">
+                 </span>
+             </div>
+             <div style="grid-row: 4; grid-column: 2; 
+            display: grid;
+            grid-template-columns: 1fr 80px;
+            grid-template-rows: 35px">
+                <div style="grid-row: 1;grid-column: 2;padding-top: 10px;">
+                    <div id="loginButton" class="button" style="width:75px;">
+                        Войти
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function showValidation(elm, errorMessage){
+        let spanElm = elm.parentElement
+        if(errorMessage){
+            spanElm.className = "textbox textbox-invalid"
+            spanElm.title = errorMessage
+        } else {
+            spanElm.className = "textbox"
+            spanElm.title = undefined
+        }
+    }
+    let loginButton = document.querySelector("#loginButton")
+    window.onload = ()=>{
+        let loginField = document.querySelector("#loginField")
+        let passwordField = document.querySelector("#passwordField")
+        loginButton.onclick = ()=>{
+           showValidation(loginField,null)
+           showValidation(passwordField,null)
+           let invalid = false
+           let loginValue = loginField.value
+           if(!loginValue){
+               showValidation(loginField, "Поле обязательно к заполнению")
+               invalid = true
+           }
+           let passwordValue = passwordField.value
+           if(!passwordValue){
+               showValidation(passwordField, "Поле обязательно к заполнению")
+               invalid = true
+           }
+           if(invalid){
+               return
+           }
+           fetch("ui-rest/docsflow_userAccount_login", {method: 'POST', cache: 'no-cache', referrerPolicy: 'no-referrer', body: JSON.stringify({
+                login : loginValue,
+                password: passwordValue
+           })})
+           .then(response => response.json())
+           .then(data =>{
+             if(!data.success){
+                 if(data.loginErrorMessage){
+                    showValidation(loginField,data.loginErrorMessage)
+                 }
+                 if(data.passwordErrorMessage){
+                    showValidation(passwordField,data.passwordErrorMessage)
+                 }
+                 return
+             }  
+             window.location.replace("index.html")
+           }).catch((e) =>{
+                console.log(e)
+                alert("Произошла непредвиденная ошибка пр и обращении к серверу")    
+            })
+    } 
+    window.onkeypress = (event) => {
+        if (event.keyCode === 13) {
+                loginButton.onclick()
+        }
+    }
+
+}
+</script>
+</html>

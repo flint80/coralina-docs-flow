@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
+    <group id="userAccount">
+        <operation id="create" handler="com.flinty.docsflow.server.core.userAccount.rest.CreateUserRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.CreateUserAccountRequest">
+                <property id="vm" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.NewUserAccountEditorVM" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.CreateUserAccountResponse">
+                <property id="vv" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.NewUserAccountEditorVV"/>
+                <property id="objectUid" type="STRING"/>
+            </response>
+        </operation>
+        <operation id="changePassword" handler="com.flinty.docsflow.server.core.userAccount.rest.ChangePasswordRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.ChangePasswordRequest">
+                <property id="userAccountUid" type="STRING" lateinit="true"/>
+                <property id="vm" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ChangePasswordEditorVM" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.ChangePasswordResponse">
+                <property id="vv" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ChangePasswordEditorVV"/>
+                <property id="errorMessage" type="STRING"/>
+            </response>
+        </operation>
+        <operation id="login" handler="com.flinty.docsflow.server.core.userAccount.rest.LoginRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.LoginRequest">
+                <property id="login" type="STRING"/>
+                <property id="password" type="STRING"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.LoginResponse">
+                <property id="success" type="BOOLEAN" non-nullable="true"/>
+                <property id="loginErrorMessage" type="STRING"/>
+                <property id="passwordErrorMessage" type="STRING"/>
+            </response>
+        </operation>
+        <operation id="logout" handler="com.flinty.docsflow.server.core.userAccount.rest.LogoutRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.LogoutRequest"/>
+            <response id="com.flinty.docsflow.common.core.model.rest.LogoutResponse"/>
+        </operation>
+    </group>
+</rest>
+
+

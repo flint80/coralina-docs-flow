@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui xmlns="http://gridnine.com/jasmine/ui">
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.Project">
+        <action-ref id="standard.saveObject"/>
+        <group id="docsflow.core.project.additional">
+            <action-ref id="standard.showVersions"/>
+        </group>
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.ProjectIndex">
+        <action-ref id="deleteSelectedListItems"/>
+        <action id="createNewProject" action-handler="com.flinty.docsflow.web.core.project.CreateNewProjectListButtonHandler"/>
+    </actions-group>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.NewProjectEditor" columns-count="1">
+        <row>
+            <cell caption="name" id="name">
+                <text-box />
+            </cell>
+        </row>
+    </grid-container>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.ProjectEditor" columns-count="1">
+        <row>
+            <cell caption="name" id="name">
+                <text-box />
+            </cell>
+        </row>
+    </grid-container>
+</ui>

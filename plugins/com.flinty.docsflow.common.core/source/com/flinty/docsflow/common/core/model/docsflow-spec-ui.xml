@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui xmlns="http://gridnine.com/jasmine/ui">
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.SpecificationIndex">
+        <action-ref id="deleteSelectedListItems"/>
+        <action id="createNewSpecification" action-handler="com.flinty.docsflow.web.core.spec.CreateNewSpecificationListButtonHandler"/>
+    </actions-group>
+</ui>

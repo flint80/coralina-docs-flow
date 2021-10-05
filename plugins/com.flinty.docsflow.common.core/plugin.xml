@@ -2,8 +2,9 @@
     <parameter id="type" value="COMMON"/>
     <dependencies>
         <plugin-dependency plugin-id="com.gridnine.jasmine.common.core"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.common.standard"/>
     </dependencies>
-    <!--<extension point-id="activator">
-        <parameter id="class" value="com.gridnine.docsflow.common.core.activator.DocsFlowCoreCommonActivator"/>
-    </extension>-->
+    <extension point-id="activator">
+        <parameter id="class" value="com.flinty.docsflow.common.core.activator.DocsFlowCoreCommonActivator"/>
+    </extension>
 </plugin>

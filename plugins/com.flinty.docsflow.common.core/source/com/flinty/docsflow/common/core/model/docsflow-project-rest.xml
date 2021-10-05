@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
+    <group id="project">
+        <operation id="create" handler="com.flinty.docsflow.server.core.project.rest.CreateProjectRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.CreateProjectRequest">
+                <property id="vm" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.NewProjectEditorVM" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.CreateProjectResponse">
+                <property id="vv" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.NewProjectEditorVV"/>
+                <property id="objectUid" type="STRING"/>
+            </response>
+        </operation>
+    </group>
+</rest>
+
+

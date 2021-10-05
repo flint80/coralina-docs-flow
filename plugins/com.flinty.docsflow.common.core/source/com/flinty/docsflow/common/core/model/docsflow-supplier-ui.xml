@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui xmlns="http://gridnine.com/jasmine/ui">
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.Supplier">
+        <action-ref id="standard.saveObject"/>
+        <group id="docsflow.core.supplier.additional">
+            <action-ref id="standard.showVersions"/>
+        </group>
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.SupplierIndex">
+        <action-ref id="deleteSelectedListItems"/>
+        <action id="createNewSupplier" action-handler="com.flinty.docsflow.web.core.supplier.CreateNewSupplierListButtonHandler"/>
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.SupplierSpellVariantIndex"/>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.NewSupplierEditor" columns-count="1">
+        <row>
+            <cell caption="name" id="name">
+                <text-box />
+            </cell>
+        </row>
+    </grid-container>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.SupplierEditor" columns-count="2">
+        <row>
+            <cell caption="name" id="name">
+                <text-box />
+            </cell>
+            <cell caption="type" id="type">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.SupplierType"/>
+            </cell>
+        </row>
+        <row>
+            <cell caption="spellVariants" id="spellVariants" col-span="2">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.SpellVariant">
+                    <column id="variant" caption="spellVariant">
+                        <text-box/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
+    </grid-container>
+</ui>

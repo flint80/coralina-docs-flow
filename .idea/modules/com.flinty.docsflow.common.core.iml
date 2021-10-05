@@ -12,5 +12,6 @@
       <orderEntry type="inheritedJdk"/>
       <orderEntry type="library" name="common" level="project"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.common.core"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.standard"/>
    </component>
 </module>

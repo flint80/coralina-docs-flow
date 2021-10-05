@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain xmlns="http://gridnine.com/jasmine/domain" >
+    <enum id="com.flinty.docsflow.common.core.model.domain.SupplierType">
+        <enum-item id="SCHNEIDER"></enum-item>
+        <enum-item id="STANDARD"></enum-item>
+    </enum>
+    <document id="com.flinty.docsflow.common.core.model.domain.Supplier" x-cache-resolve="true">
+        <property id="name" type="STRING"/>
+        <property id="type" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.SupplierType"/>
+        <collection id="spellVariants" element-type="STRING"/>
+        <code-injection>
+            override fun toString():String = name?:"???"
+        </code-injection>
+    </document>
+    <index id="com.flinty.docsflow.common.core.model.domain.SupplierSpellVariantIndex" document="com.flinty.docsflow.common.core.model.domain.Supplier">
+        <property id="spellVariant" type="STRING" x-cache-find-handler="com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantPropertyFindHandler"/>
+    </index>
+    <index id="com.flinty.docsflow.common.core.model.domain.SupplierIndex" document="com.flinty.docsflow.common.core.model.domain.Supplier">
+        <property id="name" type="STRING"/>
+    </index>
+</domain>

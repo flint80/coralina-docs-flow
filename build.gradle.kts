@@ -43,7 +43,6 @@ jasmine {
         plugin("com.flinty.docsflow.common.core")
         plugin("com.flinty.docsflow.server.core")
         plugin("com.flinty.docsflow.server.core.test")
-        plugin("com.flinty.docsflow.server.reports")
         plugin("com.flinty.docsflow.web.core")
     }
 }

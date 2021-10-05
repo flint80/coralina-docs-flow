@@ -1,2 +1,13 @@
 <code-gen xmlns="http://gridnine.com/jasmine/codegen">
+    <generate source="docsflow-user-account-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
+    <generate source="docsflow-user-account-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
+    <generate source="docsflow-user-account-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
+    <generate source="docsflow-supplier-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
+    <generate source="docsflow-supplier-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
+    <generate source="docsflow-supplier-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
+    <generate source="docsflow-project-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
+    <generate source="docsflow-project-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
+    <generate source="docsflow-project-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
+    <generate source="docsflow-spec-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
+    <generate source="docsflow-spec-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
 </code-gen>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain xmlns="http://gridnine.com/jasmine/domain" >
+    <document id="com.flinty.docsflow.common.core.model.domain.UserAccount" x-cache-resolve="true">
+        <property id="name" type="STRING"/>
+        <property id="login" type="STRING"/>
+        <property id="passwordDigest" type="STRING"/>
+        <code-injection>
+            override fun toString():String = name?:"???"
+        </code-injection>
+    </document>
+    <index id="com.flinty.docsflow.common.core.model.domain.UserAccountIndex" document="com.flinty.docsflow.common.core.model.domain.UserAccount">
+        <property id="name" type="STRING"/>
+        <property id="login" type="STRING" x-cache-find-handler="com.flinty.docsflow.server.core.userAccount.storage.UserAccountLoginPropertyFindHandler"/>
+    </index>
+</domain>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
+    <group id="supplier">
+        <operation id="create" handler="com.flinty.docsflow.server.core.supplier.rest.CreateSupplierRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.CreateSupplierRequest">
+                <property id="vm" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.NewSupplierEditorVM" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.CreateSupplierResponse">
+                <property id="vv" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.NewSupplierEditorVV"/>
+                <property id="objectUid" type="STRING"/>
+            </response>
+        </operation>
+    </group>
+</rest>
+
+
