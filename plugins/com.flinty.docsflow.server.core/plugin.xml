@@ -5,6 +5,8 @@
         <plugin-dependency plugin-id="com.gridnine.jasmine.common.standard"/>
         <plugin-dependency plugin-id="com.gridnine.jasmine.server.core"/>
         <plugin-dependency plugin-id="com.gridnine.jasmine.server.standard"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.server.reports"/>
+        <plugin-dependency plugin-id="com.gridnine.jasmine.common.core.test"/>
         <plugin-dependency plugin-id="com.flinty.docsflow.common.core"/>
     </dependencies>
     <extension point-id="activator">

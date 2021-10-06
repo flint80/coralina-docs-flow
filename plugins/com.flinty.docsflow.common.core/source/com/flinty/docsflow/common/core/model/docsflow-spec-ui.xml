@@ -2,6 +2,28 @@
 <ui xmlns="http://gridnine.com/jasmine/ui">
     <actions-group id="com.flinty.docsflow.common.core.model.domain.SpecificationIndex">
         <action-ref id="deleteSelectedListItems"/>
-        <action id="createNewSpecification" action-handler="com.flinty.docsflow.web.core.spec.CreateNewSpecificationListButtonHandler"/>
+        <group id="importSpecification">
+            <action id="importStandardSpecification" action-handler="com.flinty.docsflow.web.core.spec.ImportStandardSpecificationListButtonHandler"/>
+        </group>
     </actions-group>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialog">
+        <columns>
+            <column width="CUSTOM" custom-width="700px"/>
+        </columns>
+        <row>
+            <cell id="suppliers">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersTable"  hide-tools-column="true">
+                    <column id="supplierName" caption="supplierName">
+                        <text-box/>
+                    </column>
+                    <column id="createNew" caption="createNew">
+                        <boolean-box/>
+                    </column>
+                    <column id="existingSupplier" caption="existingSupplier">
+                        <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Supplier"/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
+    </grid-container>
 </ui>

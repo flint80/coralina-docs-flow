@@ -23,7 +23,7 @@ class DocsFlowCoreCommonActivator:IPluginActivator {
         UiMetadataParser.updateUiMetaRegistry(UiMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-project-ui.xml", javaClass.classLoader)
         DomainMetadataParser.updateDomainMetaRegistry(DomainMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-spec-domain.xml", javaClass.classLoader)
         UiMetadataParser.updateUiMetaRegistry(UiMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-spec-ui.xml", javaClass.classLoader)
-
+        RestMetadataParser.updateRestMetaRegistry(RestMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-spec-rest.xml", javaClass.classLoader)
         WebPluginsAssociations.registerAssociations()
     }
 }

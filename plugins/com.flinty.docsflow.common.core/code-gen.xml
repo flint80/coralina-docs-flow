@@ -10,6 +10,7 @@
     <source id="docsflow-project-ui" location="source/com/flinty/docsflow/common/core/model/docsflow-project-ui.xml"/>
     <source id="docsflow-spec-domain" location="source/com/flinty/docsflow/common/core/model/docsflow-spec-domain.xml"/>
     <source id="docsflow-spec-ui" location="source/com/flinty/docsflow/common/core/model/docsflow-spec-ui.xml"/>
+    <source id="docsflow-spec-rest" location="source/com/flinty/docsflow/common/core/model/docsflow-spec-rest.xml"/>
     <generate source="docsflow-user-account-domain" targetPlugin="com.flinty.docsflow.common.core" generator="common-domain"/>
     <generate source="docsflow-user-account-ui" targetPlugin="com.flinty.docsflow.common.core" generator="common-ui"/>
     <generate source="docsflow-user-account-rest" targetPlugin="com.flinty.docsflow.common.core" generator="common-rest"/>
@@ -20,4 +21,6 @@
     <generate source="docsflow-project-ui" targetPlugin="com.flinty.docsflow.common.core" generator="common-ui"/>
     <generate source="docsflow-project-rest" targetPlugin="com.flinty.docsflow.common.core" generator="common-rest"/>
     <generate source="docsflow-spec-domain" targetPlugin="com.flinty.docsflow.common.core" generator="common-domain"/>
+    <generate source="docsflow-spec-ui" targetPlugin="com.flinty.docsflow.common.core" generator="common-ui"/>
+    <generate source="docsflow-spec-rest" targetPlugin="com.flinty.docsflow.common.core" generator="common-rest"/>
 </code-gen>

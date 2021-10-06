@@ -15,6 +15,7 @@
       <orderEntry type="module" module-name="com.gridnine.jasmine.common.core"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.common.standard"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.server.core"/>
+      <orderEntry type="module" module-name="com.gridnine.jasmine.common.core.test"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.server.core.test"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.server.standard"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.server.db.h2"/>

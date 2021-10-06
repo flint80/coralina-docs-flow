@@ -10,4 +10,5 @@
     <generate source="docsflow-project-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
     <generate source="docsflow-spec-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
     <generate source="docsflow-spec-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
+    <generate source="docsflow-spec-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
 </code-gen>
