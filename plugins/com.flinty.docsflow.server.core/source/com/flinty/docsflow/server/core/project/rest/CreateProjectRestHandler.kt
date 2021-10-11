@@ -23,14 +23,18 @@ class CreateProjectRestHandler :RestHandler<CreateProjectRequest,CreateProjectRe
         if(TextUtils.isBlank(request.vm.name)){
             validation.name = StandardL10nMessagesFactory.Empty_field()
         }
+        if(TextUtils.isBlank(request.vm.code)){
+            validation.code = StandardL10nMessagesFactory.Empty_field()
+        }
         if(ValidationUtils.hasValidationErrors(validation)){
             result.vv = validation
             return result
         }
-        val supplier = Project()
-        supplier.name = request.vm.name
-        Storage.get().saveDocument(supplier)
-        result.objectUid = supplier.uid
+        val project = Project()
+        project.name = request.vm.name
+        project.code = request.vm.code!!
+        Storage.get().saveDocument(project)
+        result.objectUid = project.uid
         return result
     }
 }

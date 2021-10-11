@@ -31,18 +31,18 @@ object StandardSpecificationParser{
         val result = arrayListOf<ParsedSpecificationPosition>()
         var sectionStarted = false
         for(idx in 0..specSheet.lastRowNum){
-            val toBeOrdered = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("I"), true)
+            val toBeOrdered = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("I"), 5,true)
             val supplier = ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("A"), false)?:lastSupplier
             lastSupplier = supplier
             val name = ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("B"), false)
             val article = ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("C"), false)
-            val amount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("D"), true)
+            val amount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("D"), 5,true)
             val unit = if(toBeOrdered!= null) ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("E"), false)?.let {
                 SpecParcerUtils.getUnit(it)
             } else null
-            val primAmount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("F"), true)
+            val primAmount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("F"), 5,true)
             val primUnit = ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("G"), false)?.let { SpecParcerUtils.getUnit(it) }
-            val storeAmount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("H"), true)
+            val storeAmount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("H"), 5,true)
             if(toBeOrdered != null){
                 sectionStarted = true
                 if(name == null){

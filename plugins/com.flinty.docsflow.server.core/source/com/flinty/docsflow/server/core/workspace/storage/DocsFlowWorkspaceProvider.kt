@@ -63,6 +63,7 @@ class DocsFlowWorkspaceProvider : WorkspaceProvider {
             group.displayName = "Проекты"
             val item = ListWorkspaceItem()
             item.columns.add(ProjectIndex.nameProperty.name)
+            item.columns.add(ProjectIndex.codeProperty.name)
             val order = SortOrder()
             order.orderType = SortOrderType.ASC
             order.field = ProjectIndex.nameProperty.name

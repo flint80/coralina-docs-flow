@@ -23,17 +23,19 @@
         <property id="toBeOrdered" type="BIG_DECIMAL" non-nullable="true"/>
     </nested-document>
     <document id="com.flinty.docsflow.common.core.model.domain.Specification">
-        <property id="name" type="STRING"/>
-        <property id="project" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Project"/>
+        <property id="name" type="STRING" non-nullable="true"/>
+        <property id="code" type="STRING" non-nullable="true"/>
+        <property id="project" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Project" non-nullable="true"/>
         <property id="content" type="NESTED_DOCUMENT" non-nullable="true" class-name="com.gridnine.jasmine.common.standard.model.FileData"/>
         <property id="status" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationStatus" non-nullable="true"/>
         <collection id="positions" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.SpecificationPosition"/>
         <code-injection>
-            override fun toString():String = name?:"???"
+            override fun toString():String = code?:"???"
         </code-injection>
     </document>
     <index id="com.flinty.docsflow.common.core.model.domain.SpecificationIndex" document="com.flinty.docsflow.common.core.model.domain.Specification">
         <property id="name" type="STRING"/>
+        <property id="code" type="STRING"/>
         <property id="project" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Project"/>
         <property id="status" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationStatus"/>
     </index>

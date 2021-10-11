@@ -35,19 +35,26 @@ class ProjectEditorHandler:ObjectEditorHandler<Project, ProjectEditorVM, Project
     }
     override fun read(entity: Project, vmEntity: ProjectEditorVM, ctx: MutableMap<String, Any?>) {
         vmEntity.name = entity.name
+        vmEntity.code = entity.code
+        vmEntity.active = entity.active
     }
 
     override fun getTitle(entity: Project, vmEntity: ProjectEditorVM, vsEntity: ProjectEditorVS, ctx: MutableMap<String, Any?>): String? {
-        return entity.name
+        return entity.code
     }
 
     override fun write(entity: Project, vmEntity: ProjectEditorVM, ctx: MutableMap<String, Any?>) {
         entity.name = vmEntity.name
+        entity.code = vmEntity.code!!
+        entity.active = vmEntity.active
     }
 
     override fun validate(vmEntity: ProjectEditorVM, vvEntity: ProjectEditorVV, ctx: MutableMap<String, Any?>) {
         if(TextUtils.isBlank(vmEntity.name)){
             vvEntity.name = StandardL10nMessagesFactory.Empty_field()
+        }
+        if(TextUtils.isBlank(vmEntity.code)){
+            vvEntity.code = StandardL10nMessagesFactory.Empty_field()
         }
     }
 }

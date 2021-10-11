@@ -2,16 +2,29 @@
 <ui xmlns="http://gridnine.com/jasmine/ui">
     <actions-group id="com.flinty.docsflow.common.core.model.domain.SpecificationIndex">
         <action-ref id="deleteSelectedListItems"/>
-        <group id="importSpecification">
-            <action id="importStandardSpecification" action-handler="com.flinty.docsflow.web.core.spec.ImportStandardSpecificationListButtonHandler"/>
+        <action id="importStandardSpecification" action-handler="com.flinty.docsflow.web.core.spec.ImportStandardSpecificationListButtonHandler"/>
+        <action id="convertSpecialSpecification" action-handler="com.flinty.docsflow.web.core.spec.ConvertSpecialSpecificationListButtonHandler"/>
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.Specification">
+        <action-ref id="standard.saveObject"/>
+        <action id="check" action-handler="com.flinty.docsflow.web.core.spec.CheckSpecificationEditorObjectButtonHandler"/>
+        <action id="deleteItems" action-handler="com.flinty.docsflow.web.core.spec.DeleteItemsSpecificationEditorObjectButtonHandler"/>
+        <group id="docsflow.core.spec.additional">
+            <action-ref id="standard.showVersions"/>
         </group>
     </actions-group>
     <grid-container id="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialog">
         <columns>
-            <column width="CUSTOM" custom-width="700px"/>
+            <column width="STANDARD"/>
+            <column width="CUSTOM" custom-width="500px"/>
         </columns>
         <row>
-            <cell id="suppliers">
+            <cell id="project" caption="project">
+                <general-select-box/>
+            </cell>
+        </row>
+        <row>
+            <cell id="suppliers" col-span="2">
                 <table-box id="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersTable"  hide-tools-column="true">
                     <column id="supplierName" caption="supplierName">
                         <text-box/>
@@ -23,6 +36,92 @@
                         <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Supplier"/>
                     </column>
                 </table-box>
+            </cell>
+        </row>
+    </grid-container>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.SpecificationItemsTableItemEditor">
+        <columns>
+            <column width="CUSTOM" custom-width="400px"/>
+        </columns>
+        <row>
+            <cell id="name" caption="name">
+                <text-box not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="article" caption="article">
+                <text-box not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="supplier" caption="supplier">
+                <entity-select-box not-editable="true" objectId="com.flinty.docsflow.common.core.model.domain.Supplier"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="amount" caption="amount">
+                <big-decimal-number-box precision="10"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="unit" caption="unit">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.SpecificationPositionUnit"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="amountNote" caption="amountNote">
+                <big-decimal-number-box  precision="10"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="unitNote" caption="unitNote">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.SpecificationPositionUnit"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="storeAmount" caption="storeAmount">
+                <big-decimal-number-box  precision="10"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="toBeOrdered" caption="toBeOrdered">
+                <big-decimal-number-box  precision="10"/>
+            </cell>
+        </row>
+    </grid-container>
+    <custom-value-widget id="com.flinty.docsflow.web.core.spec.SpecificationItemsTableEditor">
+        <view-model>
+            <collection id="items" element-type="ENTITY" object-id="com.flinty.docsflow.common.core.model.ui.SpecificationItemsTableItemEditorVM"/>
+        </view-model>
+        <view-settings></view-settings>
+        <view-validation></view-validation>
+    </custom-value-widget>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.SpecificationEditor">
+        <columns>
+            <column width="STANDARD"/>
+            <column width="STANDARD"/>
+            <column width="STANDARD"/>
+            <column width="REMAINING"/>
+        </columns>
+        <row>
+            <cell id="code" caption="code">
+                <text-box not-editable="true"/>
+            </cell>
+            <cell id="project" caption="project">
+                <general-select-box not-editable="true"/>
+            </cell>
+            <cell id="status" caption="status">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.SpecificationStatus" not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="name" caption="name" col-span="3">
+                <text-box/>
+            </cell>
+        </row>
+        <row height="REMAINING">
+            <cell id="specification" col-span="4">
+                <custom-value-widget ref="com.flinty.docsflow.web.core.spec.SpecificationItemsTableEditor"/>
             </cell>
         </row>
     </grid-container>

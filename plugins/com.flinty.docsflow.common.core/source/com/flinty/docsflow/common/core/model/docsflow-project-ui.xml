@@ -16,11 +16,26 @@
                 <text-box />
             </cell>
         </row>
+        <row>
+            <cell caption="code" id="code">
+                <text-box />
+            </cell>
+        </row>
     </grid-container>
     <grid-container id="com.flinty.docsflow.common.core.model.ui.ProjectEditor" columns-count="1">
         <row>
             <cell caption="name" id="name">
                 <text-box />
+            </cell>
+        </row>
+        <row>
+            <cell caption="code" id="code">
+                <text-box />
+            </cell>
+        </row>
+        <row>
+            <cell caption="active" id="active">
+                <boolean-box/>
             </cell>
         </row>
     </grid-container>

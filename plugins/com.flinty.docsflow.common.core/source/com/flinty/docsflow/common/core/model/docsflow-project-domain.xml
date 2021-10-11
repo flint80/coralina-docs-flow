@@ -2,11 +2,15 @@
 <domain xmlns="http://gridnine.com/jasmine/domain" >
     <document id="com.flinty.docsflow.common.core.model.domain.Project" x-cache-resolve="true">
         <property id="name" type="STRING"/>
+        <property id="code" type="STRING" non-nullable="true"/>
+        <property id="active" type="BOOLEAN" non-nullable="true"/>
         <code-injection>
             override fun toString():String = name?:"???"
         </code-injection>
     </document>
     <index id="com.flinty.docsflow.common.core.model.domain.ProjectIndex" document="com.flinty.docsflow.common.core.model.domain.Project">
         <property id="name" type="STRING"/>
+        <property id="code" type="STRING"/>
+        <property id="active" type="BOOLEAN"/>
     </index>
 </domain>

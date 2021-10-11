@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
-    <enum id="com.flinty.docsflow.server.core.spec.rest.SpecificationFormat">
-        <enum-item id="STANDARD"/>
-    </enum>
     <group id="specification">
         <operation id="checkSuppliers" handler="com.flinty.docsflow.server.core.spec.rest.CheckSpecificationSuppliersRestHandler">
             <request id="com.flinty.docsflow.common.core.model.rest.CheckSpecificationSuppliersRequest">
-                <property id="specType" type="ENUM" class-name="com.flinty.docsflow.server.core.spec.rest.SpecificationFormat" lateinit="true"/>
                 <property id="content" type="STRING" lateinit="true"/>
             </request>
             <response id="com.flinty.docsflow.common.core.model.rest.CheckSpecificationSuppliersResponse">
-                <property id="allSuppliersExist" type="BOOLEAN"/>
                 <property id="dialogVM" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialogVM"/>
+                <property id="dialogVS" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialogVS"/>
             </response>
         </operation>
         <operation id="import" handler="com.flinty.docsflow.server.core.spec.rest.ImportSpecificationRestHandler">
             <request id="com.flinty.docsflow.common.core.model.rest.ImportSpecificationRequest">
-                <property id="specType" type="ENUM" class-name="com.flinty.docsflow.server.core.spec.rest.SpecificationFormat" lateinit="true"/>
-                <property id="content" type="STRING" lateinit="true"/>
-                <property id="dialogVM" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialogVM"/>
+                <property id="fileData" type="ENTITY" class-name="com.gridnine.jasmine.common.standard.rest.FileDataDT" lateinit="true"/>
+                <property id="dialogVM" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialogVM" />
             </request>
             <response id="com.flinty.docsflow.common.core.model.rest.ImportSpecificationResponse">
                 <property id="dialogVV" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialogVV"/>
                 <property id="objectUid" type="STRING"/>
+            </response>
+        </operation>
+        <operation id="convertSpecialSpecification" handler="com.flinty.docsflow.server.core.spec.rest.ConvertSpecialSpecificationRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.ConvertSpecialSpecificationRequest">
+                <property id="content" type="STRING" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.ConvertSpecialSpecificationResponse">
+                <property id="content" type="STRING" lateinit="true"/>
             </response>
         </operation>
     </group>

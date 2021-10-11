@@ -4,12 +4,16 @@
  *****************************************************************/
 package com.flinty.docsflow.server.core.activator
 
+import com.flinty.docsflow.common.core.model.domain.Project
 import com.flinty.docsflow.common.core.model.domain.UserAccount
 import com.flinty.docsflow.common.core.model.domain.UserAccountIndex
 import com.flinty.docsflow.server.core.project.storage.ProjectIndexHandler
 import com.flinty.docsflow.server.core.project.ui.ProjectEditorHandler
 import com.flinty.docsflow.server.core.spec.storage.SpecificationIndexHandler
+import com.flinty.docsflow.server.core.spec.ui.SpecificationEditorHandler
 import com.flinty.docsflow.server.core.supplier.storage.SupplierIndexHandler
+import com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantPropertyFindHandler
+import com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantsIndexHandler
 import com.flinty.docsflow.server.core.supplier.ui.SupplierEditorHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountIndexHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountStorageInterceptor
@@ -51,6 +55,8 @@ class DocsFlowServerCoreActivator:IPluginActivator {
         WebServerConfig.get().globalFilters.add(WebAppFilter("exception-filter", ExceptionFilter::class))
         WebServerConfig.get().globalFilters.add(WebAppFilter("auth-filter", DocsFlowAuthFilter::class))
         StorageRegistry.get().register(SupplierIndexHandler())
+        StorageRegistry.get().register(SupplierSpellVariantsIndexHandler())
+
         StorageRegistry.get().register(UserAccountIndexHandler())
         StorageRegistry.get().register(UserAccountStorageInterceptor())
         StorageRegistry.get().register(ProjectIndexHandler())
@@ -58,6 +64,7 @@ class DocsFlowServerCoreActivator:IPluginActivator {
         ObjectEditorsRegistry.get().register(SupplierEditorHandler())
         ObjectEditorsRegistry.get().register(UserAccountEditorHandler())
         ObjectEditorsRegistry.get().register(ProjectEditorHandler())
+        ObjectEditorsRegistry.get().register(SpecificationEditorHandler())
         Environment.publish(WorkspaceProvider::class, DocsFlowWorkspaceProvider())
     }
     private fun addApp(context: String, res: String, file: String) {
@@ -82,5 +89,10 @@ class DocsFlowServerCoreActivator:IPluginActivator {
         account.passwordDigest = DigestUtils.getMd5Hash("admin")
         account.name= "Администратор"
         Storage.get().saveDocument(account, true, "setup")
+        Storage.get().saveDocument(Project().also {
+            it.active = true
+            it.code = "TEST"
+            it.name = "Test project"
+        })
     }
 }

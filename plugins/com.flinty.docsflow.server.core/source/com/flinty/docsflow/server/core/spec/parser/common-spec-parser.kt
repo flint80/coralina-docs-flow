@@ -36,7 +36,7 @@ object SpecParcerUtils{
             lc.contains("шт") ->SpecificationPositionUnit.PIECE
             lc.contains("уп") ->SpecificationPositionUnit.PACKAGE
             lc.contains("компл") ->SpecificationPositionUnit.SET
-            lc == "м" ->SpecificationPositionUnit.METER
+            lc == "м"||lc == "м." ->SpecificationPositionUnit.METER
             else -> throw Xeption.forEndUser(L10nMessage("неизвестная единица измерения $strValue"))
         }
     }

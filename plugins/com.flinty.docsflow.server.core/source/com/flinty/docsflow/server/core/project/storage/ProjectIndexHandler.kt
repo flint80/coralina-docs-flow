@@ -17,6 +17,8 @@ class ProjectIndexHandler : IndexHandler<Project, ProjectIndex> {
         val idx = ProjectIndex()
         idx.uid = doc.uid
         idx.name = doc.name
+        idx.code = doc.code
+        idx.active = doc.active
         return arrayListOf(idx)
     }
 }
