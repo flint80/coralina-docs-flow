@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui xmlns="http://gridnine.com/jasmine/ui">
+    <enum id="com.flinty.docsflow.common.core.model.domain.StandardInvoiceColumnType">
+        <enum-item id="IGNORE"/>
+        <enum-item id="ARTICLE"/>
+        <enum-item id="AMOUNT"/>
+        <enum-item id="TOTAL_PRICE"/>
+    </enum>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.InvoiceIndex">
+        <action-ref id="deleteSelectedListItems"/>
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.Invoice">
+        <action-ref id="standard.saveObject"/>
+        <group id="docsflow.core.invoice.import">
+            <action id="docsflow.core.invoice.importStandard" action-handler="com.flinty.docsflow.web.core.invoice.ImportStandardInvoiceEditorObjectButtonHandler" display-handler-ref="edit-state-handler"/>
+            <action id="docsflow.core.invoice.importSchneider" action-handler="com.flinty.docsflow.web.core.invoice.ImportSchneiderInvoiceEditorObjectButtonHandler" display-handler-ref="edit-state-handler"/>
+        </group>
+        <group id="docsflow.core.invoice.additional">
+            <action-ref id="standard.showVersions"/>
+        </group>
+    </actions-group>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.InvoicePositionsTableItemEditor">
+        <columns>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+        </columns>
+        <row>
+            <cell id="name" caption="name" col-span="4">
+                <text-box not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="article" caption="article">
+                <text-box not-editable="true"/>
+            </cell>
+            <cell id="orderAmount" caption="orderAmount">
+                <big-decimal-number-box not-editable="true"   precision="10"/>
+            </cell>
+            <cell id="invoiceAmount" caption="invoiceAmount">
+                <big-decimal-number-box  precision="10"/>
+            </cell>
+            <cell id="unit" caption="unit">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.PositionUnit" not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="surplus" caption="surplus" col-span="2">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Surplus" not-editable="true"/>
+            </cell>
+            <cell id="totalPrice" caption="totalPrice" col-span="2">
+                <big-decimal-number-box not-editable="true"   precision="10"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="orderSplits" col-span="4" caption="orderSplits">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.InvoiceSurplusSplit" hide-tools-column="true" not-editable="true">
+                    <column id="order" caption="order">
+                        <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" not-editable="true"/>
+                    </column>
+                    <column id="amount" caption="amount">
+                        <big-decimal-number-box precision="10" not-editable="true"/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
+    </grid-container>
+    <custom-value-widget id="com.flinty.docsflow.web.core.invoice.InvoiceItemsTableEditor">
+        <view-model>
+            <collection id="items" element-type="ENTITY" object-id="com.flinty.docsflow.common.core.model.ui.InvoicePositionsTableItemEditorVM"/>
+        </view-model>
+        <view-settings></view-settings>
+        <view-validation></view-validation>
+    </custom-value-widget>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.InvoiceEditor">
+        <columns>
+            <column width="STANDARD"/>
+            <column width="STANDARD"/>
+            <column width="STANDARD"/>
+            <column width="REMAINING"/>
+        </columns>
+        <row>
+            <cell id="number" caption="number">
+                <text-box/>
+            </cell>
+            <cell id="status" caption="status">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.InvoiceStatus"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="supplier" caption="supplier">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Supplier" not-editable="true"/>
+            </cell>
+            <cell id="order" caption="order">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" not-editable="true"/>
+            </cell>
+            <cell id="vatIncluded" caption="vatIncluded">
+                <boolean-box/>
+            </cell>
+        </row>
+        <row height="REMAINING">
+            <cell id="positions" col-span="4" caption="positions">
+                <custom-value-widget ref="com.flinty.docsflow.web.core.invoice.InvoiceItemsTableEditor"/>
+            </cell>
+        </row>
+    </grid-container>
+</ui>

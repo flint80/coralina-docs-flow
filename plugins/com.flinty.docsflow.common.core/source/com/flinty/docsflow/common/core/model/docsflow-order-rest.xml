@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
+    <group id="order">
+        <operation id="calculateDifference" handler="com.flinty.docsflow.server.core.order.rest.CalculateOrderDifferenceRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.CalculateOrderDifferenceRequest">
+                <property id="orderUid" type="STRING" non-nullable="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.CalculateOrderDifferenceResponse">
+                <property id="vm" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ShowOrderDifferenceDialogVM" lateinit="true"/>
+            </response>
+        </operation>
+        <operation id="downloadOrder" handler="com.flinty.docsflow.server.core.order.rest.DownloadOrderRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.DownloadOrderRequest">
+                <property id="orderUid" type="STRING" non-nullable="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.DownloadOrderResponse">
+                <property id="file" type="ENTITY" class-name="com.gridnine.jasmine.common.standard.rest.FileDataDT" lateinit="true"/>
+            </response>
+        </operation>
+        <operation id="createInvoice" handler="com.flinty.docsflow.server.core.order.rest.CreateInvoiceRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.CreateInvoiceRestRequest">
+                <property id="orderUid" type="STRING" non-nullable="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.CreateInvoiceRestResponse">
+                <property type="STRING" id="invoiceUid" lateinit="true"/>
+            </response>
+        </operation>
+    </group>
+</rest>
+
+

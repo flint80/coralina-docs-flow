@@ -60,6 +60,7 @@ class SpecificationEditorHandler:ObjectEditorHandler<Specification, Specificatio
                 it.toBeOrdered = pos.toBeOrdered
                 it.unit = pos.unit
                 it.unitNote = pos.unitNote
+                it.order = pos.order
             })
         }
     }
@@ -73,14 +74,15 @@ class SpecificationEditorHandler:ObjectEditorHandler<Specification, Specificatio
         val oldPositions = ArrayList(entity.positions)
         entity.positions.clear()
         vmEntity.specification.items.forEach {vmPos ->
-            val pos = oldPositions.find { it.article == vmPos.article }?:SpecificationPosition()
+            val pos = oldPositions.find { it.article == vmPos.article }?:SpecificationPosition().also { it.uid = TextUtils.generateUid() }
             entity.positions.add(pos)
             pos.unitNote = vmPos.unitNote
             pos.unit = vmPos.unit!!
             pos.toBeOrdered = vmPos.toBeOrdered!!
             pos.supplier = vmPos.supplier!!
             pos.name = vmPos.name!!
-            pos.storeAmount = vmPos.storeAmount!!
+            pos.amount = vmPos.amount!!
+            pos.storeAmount = vmPos.amount!!.subtract(vmPos.storeAmount)
             pos.article = vmPos.article!!
             pos.amountNote = vmPos.amountNote
         }

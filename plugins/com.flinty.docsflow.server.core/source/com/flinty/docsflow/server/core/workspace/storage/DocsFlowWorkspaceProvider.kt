@@ -115,6 +115,130 @@ class DocsFlowWorkspaceProvider : WorkspaceProvider {
             }
             result.groups.add(group)
         }
+        run {
+            val group = WorkspaceGroup()
+            group.displayName = "Заказы"
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(SpecificationOrderIndex.codeProperty.name)
+                item.columns.add(SpecificationOrderIndex.supplierProperty.name)
+                item.columns.add(SpecificationOrderIndex.statusProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = SpecificationOrderIndex.codeProperty.name
+                item.displayName = "Все заказы"
+                item.listId = SpecificationOrderIndex::class.qualifiedName
+                group.items.add(item)
+            }
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(SpecificationOrderIndex.codeProperty.name)
+                item.columns.add(SpecificationOrderIndex.supplierProperty.name)
+                item.columns.add(SpecificationOrderIndex.statusProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = SpecificationOrderIndex.codeProperty.name
+                item.displayName = "Черновики"
+                item.listId = SpecificationOrderIndex::class.qualifiedName
+                item.criterions.add(
+                    SimpleWorkspaceCriterion().also {
+                        it.property = SpecificationOrderIndex.statusProperty.name
+                        it.condition = WorkspaceSimpleCriterionCondition.EQUALS
+                        it.value = WorkspaceSimpleCriterionEnumValues().also { crit ->
+                            crit.enumClassName = OrderStatus::class.qualifiedName+"JS"
+                            crit.values.add(OrderStatus.DRAFT.name)
+                        }
+                    })
+                group.items.add(item)
+            }
+            result.groups.add(group)
+        }
+        run {
+            val group = WorkspaceGroup()
+            group.displayName = "Счета"
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(InvoiceIndex.invoiceNumberProperty.name)
+                item.columns.add(InvoiceIndex.specificationOrderProperty.name)
+                item.columns.add(InvoiceIndex.statusProperty.name)
+                item.columns.add(InvoiceIndex.supplierProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = InvoiceIndex.invoiceNumberProperty.name
+                item.displayName = "Все счета"
+                item.listId = InvoiceIndex::class.qualifiedName
+                group.items.add(item)
+            }
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(InvoiceIndex.invoiceNumberProperty.name)
+                item.columns.add(InvoiceIndex.specificationOrderProperty.name)
+                item.columns.add(InvoiceIndex.statusProperty.name)
+                item.columns.add(InvoiceIndex.supplierProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = InvoiceIndex.invoiceNumberProperty.name
+                item.displayName = "Черновики"
+                item.listId = InvoiceIndex::class.qualifiedName
+                item.criterions.add(
+                    SimpleWorkspaceCriterion().also {
+                        it.property = InvoiceIndex.statusProperty.name
+                        it.condition = WorkspaceSimpleCriterionCondition.EQUALS
+                        it.value = WorkspaceSimpleCriterionEnumValues().also { crit ->
+                            crit.enumClassName = InvoiceStatus::class.qualifiedName+"JS"
+                            crit.values.add(InvoiceStatus.DRAFT.name)
+                        }
+                    })
+                group.items.add(item)
+            }
+            result.groups.add(group)
+        }
+        run {
+            val group = WorkspaceGroup()
+            group.displayName = "Излишки"
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(SurplusIndex.articleProperty.name)
+                item.columns.add(SurplusIndex.nameProperty.name)
+                item.columns.add(SurplusIndex.amountProperty.name)
+                item.columns.add(SurplusIndex.unitProperty.name)
+                item.columns.add(SurplusIndex.invoiceProperty.name)
+                item.columns.add(SurplusIndex.statusProperty.name)
+                item.columns.add(SurplusIndex.specificationOrderProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = SurplusIndex.nameProperty.name
+                item.displayName = "Все излишки"
+                item.listId = SurplusIndex::class.qualifiedName
+                group.items.add(item)
+            }
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(SurplusIndex.articleProperty.name)
+                item.columns.add(SurplusIndex.nameProperty.name)
+                item.columns.add(SurplusIndex.amountProperty.name)
+                item.columns.add(SurplusIndex.unitProperty.name)
+                item.columns.add(SurplusIndex.invoiceProperty.name)
+                item.columns.add(SurplusIndex.statusProperty.name)
+                item.columns.add(SurplusIndex.specificationOrderProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = SurplusIndex.nameProperty.name
+                item.displayName = "Черновики"
+                item.listId = SurplusIndex::class.qualifiedName
+                item.criterions.add(
+                    SimpleWorkspaceCriterion().also {
+                        it.property = SurplusIndex.statusProperty.name
+                        it.condition = WorkspaceSimpleCriterionCondition.EQUALS
+                        it.value = WorkspaceSimpleCriterionEnumValues().also { crit ->
+                            crit.enumClassName = SurplusStatus::class.qualifiedName+"JS"
+                            crit.values.add(SurplusStatus.DRAFT.name)
+                        }
+                    })
+                group.items.add(item)
+            }
+            result.groups.add(group)
+        }
         saveWorkspace(result)
         return result
     }

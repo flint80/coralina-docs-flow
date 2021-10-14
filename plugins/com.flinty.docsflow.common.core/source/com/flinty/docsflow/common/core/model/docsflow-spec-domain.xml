@@ -5,22 +5,25 @@
         <enum-item id="ORDERED"/>
         <enum-item id="PARTIALLY_ORDERED"/>
     </enum>
-    <enum id="com.flinty.docsflow.common.core.model.domain.SpecificationPositionUnit">
+    <enum id="com.flinty.docsflow.common.core.model.domain.PositionUnit">
         <enum-item id="PIECE"/>
         <enum-item id="PACKAGE"/>
         <enum-item id="SET"/>
         <enum-item id="METER"/>
+        <enum-item id="PLATE"/>
     </enum>
     <nested-document id="com.flinty.docsflow.common.core.model.domain.SpecificationPosition">
         <property id="article" type="STRING" non-nullable="true"/>
         <property id="name" type="STRING" non-nullable="true"/>
         <property id="supplier" type="ENTITY_REFERENCE" non-nullable="true" class-name="com.flinty.docsflow.common.core.model.domain.Supplier"/>
         <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
-        <property id="unit" type="ENUM" non-nullable="true" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationPositionUnit"/>
+        <property id="unit" type="ENUM" non-nullable="true" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit"/>
         <property id="amountNote" type="BIG_DECIMAL"/>
-        <property id="unitNote" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationPositionUnit"/>
+        <property id="unitNote" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit"/>
         <property id="storeAmount" type="BIG_DECIMAL" non-nullable="true"/>
         <property id="toBeOrdered" type="BIG_DECIMAL" non-nullable="true"/>
+        <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder"/>
+        <property id="orderAmount" type="BIG_DECIMAL"/>
     </nested-document>
     <document id="com.flinty.docsflow.common.core.model.domain.Specification">
         <property id="name" type="STRING" non-nullable="true"/>

@@ -7,12 +7,18 @@ package com.flinty.docsflow.server.core.activator
 import com.flinty.docsflow.common.core.model.domain.Project
 import com.flinty.docsflow.common.core.model.domain.UserAccount
 import com.flinty.docsflow.common.core.model.domain.UserAccountIndex
+import com.flinty.docsflow.server.core.invoice.storage.InvoiceIndexHandler
+import com.flinty.docsflow.server.core.invoice.storage.InvoiceInterceptor
+import com.flinty.docsflow.server.core.invoice.ui.InvoiceEditorHandler
+import com.flinty.docsflow.server.core.order.storage.OrderIndexHandler
+import com.flinty.docsflow.server.core.order.storage.OrderInterceptor
+import com.flinty.docsflow.server.core.order.ui.OrderEditorHandler
 import com.flinty.docsflow.server.core.project.storage.ProjectIndexHandler
 import com.flinty.docsflow.server.core.project.ui.ProjectEditorHandler
 import com.flinty.docsflow.server.core.spec.storage.SpecificationIndexHandler
+import com.flinty.docsflow.server.core.spec.storage.SpecificationInterceptor
 import com.flinty.docsflow.server.core.spec.ui.SpecificationEditorHandler
 import com.flinty.docsflow.server.core.supplier.storage.SupplierIndexHandler
-import com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantPropertyFindHandler
 import com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantsIndexHandler
 import com.flinty.docsflow.server.core.supplier.ui.SupplierEditorHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountIndexHandler
@@ -61,10 +67,20 @@ class DocsFlowServerCoreActivator:IPluginActivator {
         StorageRegistry.get().register(UserAccountStorageInterceptor())
         StorageRegistry.get().register(ProjectIndexHandler())
         StorageRegistry.get().register(SpecificationIndexHandler())
+        StorageRegistry.get().register(OrderIndexHandler())
+        StorageRegistry.get().register(InvoiceIndexHandler())
+        StorageRegistry.get().register(SupplierIndexHandler())
+
+        StorageRegistry.get().register(SpecificationInterceptor())
+        StorageRegistry.get().register(OrderInterceptor())
+        StorageRegistry.get().register(InvoiceInterceptor())
+
         ObjectEditorsRegistry.get().register(SupplierEditorHandler())
         ObjectEditorsRegistry.get().register(UserAccountEditorHandler())
         ObjectEditorsRegistry.get().register(ProjectEditorHandler())
         ObjectEditorsRegistry.get().register(SpecificationEditorHandler())
+        ObjectEditorsRegistry.get().register(OrderEditorHandler())
+        ObjectEditorsRegistry.get().register(InvoiceEditorHandler())
         Environment.publish(WorkspaceProvider::class, DocsFlowWorkspaceProvider())
     }
     private fun addApp(context: String, res: String, file: String) {

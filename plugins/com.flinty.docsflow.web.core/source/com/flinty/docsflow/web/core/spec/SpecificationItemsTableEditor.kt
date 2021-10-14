@@ -152,7 +152,7 @@ class SpecificationItemsTableEditor:WebEditor<SpecificationItemsTableEditorVMJS,
                                 item.name = data.name
                                 item.storeAmount = data.storeAmount
                                 item.supplier = data.supplier
-                                item.toBeOrdered = data.toBeOrdered
+                                item.toBeOrdered = data.amount!!-data.storeAmount!!
                                 item.unit = data.unit
                                 item.unitNote = data.unitNote
                                 _node.reload()

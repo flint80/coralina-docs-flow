@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain xmlns="http://gridnine.com/jasmine/domain" >
+    <enum id="com.flinty.docsflow.common.core.model.domain.InvoiceStatus">
+        <enum-item id="DRAFT"/>
+        <enum-item id="FIXED"/>
+    </enum>
+    <nested-document id="com.flinty.docsflow.common.core.model.domain.InvoiceSurplusSplit">
+        <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" non-nullable="true"/>
+        <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
+    </nested-document>
+    <nested-document id="com.flinty.docsflow.common.core.model.domain.InvoicePosition">
+        <property id="article" type="STRING" non-nullable="true"/>
+        <property id="name" type="STRING" non-nullable="true"/>
+        <property id="orderAmount" type="BIG_DECIMAL" non-nullable="true"/>
+        <property id="invoiceAmount" type="BIG_DECIMAL" />
+        <property id="totalPrice" type="BIG_DECIMAL"/>
+        <property id="unit" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit" non-nullable="true"/>
+        <property id="surplus" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Surplus"/>
+        <collection id="surplusSplits" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.InvoiceSurplusSplit"/>
+    </nested-document>
+   <document id="com.flinty.docsflow.common.core.model.domain.Invoice">
+       <property id="vatIncluded" type="BOOLEAN" non-nullable="true"/>
+       <property id="number" type="STRING"/>
+       <property id="status" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.InvoiceStatus" non-nullable="true"/>
+       <property id="supplier" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Supplier" non-nullable="true"/>
+       <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" non-nullable="true"/>
+       <collection id="positions" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.InvoicePosition"/>
+       <code-injection>
+           override fun toString():String = number?:"???"
+       </code-injection>
+   </document>
+    <index id="com.flinty.docsflow.common.core.model.domain.InvoiceIndex" document="com.flinty.docsflow.common.core.model.domain.Invoice">
+        <property id="invoiceNumber" type="STRING"/>
+        <property id="status" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.InvoiceStatus"/>
+        <property id="supplier" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Supplier"/>
+        <property id="specificationOrder" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder"/>
+    </index>
+</domain>

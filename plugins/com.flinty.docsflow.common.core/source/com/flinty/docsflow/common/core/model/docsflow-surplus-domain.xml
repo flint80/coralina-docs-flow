@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain xmlns="http://gridnine.com/jasmine/domain" >
+    <enum id="com.flinty.docsflow.common.core.model.domain.SurplusStatus">
+        <enum-item id="DRAFT"/>
+        <enum-item id="FIXED"/>
+    </enum>
+    <nested-document id="com.flinty.docsflow.common.core.model.domain.SurplusSplit">
+        <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" non-nullable="true"/>
+        <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
+    </nested-document>
+    <document id="com.flinty.docsflow.common.core.model.domain.Surplus">
+        <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder"/>
+        <property id="status" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.SurplusStatus" non-nullable="true"/>
+        <property id="invoice" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Invoice" non-nullable="true"/>
+        <property id="article" type="STRING" non-nullable="true"/>
+        <property id="name" type="STRING" non-nullable="true"/>
+        <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
+        <property id="unit" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit" non-nullable="true"/>
+        <collection id="splits" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.SurplusSplit"/>
+    </document>
+    <index id="com.flinty.docsflow.common.core.model.domain.SurplusIndex" document="com.flinty.docsflow.common.core.model.domain.Surplus">
+        <property id="specificationOrder" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder"/>
+        <property id="status" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.SurplusStatus"/>
+        <property id="invoice" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Invoice"/>
+        <property id="article" type="STRING"/>
+        <property id="name" type="STRING"/>
+        <property id="amount" type="BIG_DECIMAL"/>
+        <property id="unit" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit"/>
+    </index>
+
+</domain>

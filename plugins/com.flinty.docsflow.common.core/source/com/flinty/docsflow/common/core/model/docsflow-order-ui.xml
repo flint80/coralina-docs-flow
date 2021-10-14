@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui xmlns="http://gridnine.com/jasmine/ui">
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.OrderIndex">
+        <action-ref id="deleteSelectedListItems"/>
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.Order">
+        <action-ref id="standard.saveObject"/>
+        <action id="showDifference" action-handler="com.flinty.docsflow.web.core.order.ShowOrderDifferenceEditorObjectButtonHandler"/>
+        <action id="download" action-handler="com.flinty.docsflow.web.core.order.DownloadOrderEditorObjectButtonHandler"/>
+        <action id="createInvoice" action-handler="com.flinty.docsflow.web.core.order.CreateInvoiceOrderEditorObjectButtonHandler"/>
+        <group id="docsflow.core.order.additional">
+            <action-ref id="standard.showVersions"/>
+        </group>
+    </actions-group>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.OrderPositionsTableItemEditor">
+        <columns>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+        </columns>
+        <row>
+            <cell id="name" caption="name" col-span="4">
+                <text-box not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="article" caption="article">
+                <text-box not-editable="true"/>
+            </cell>
+            <cell id="amount" caption="amount">
+                <big-decimal-number-box not-editable="true"   precision="10"/>
+            </cell>
+            <cell id="unit" caption="unit">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.PositionUnit" not-editable="true"/>
+            </cell>
+            <cell id="specAmount" caption="specAmount">
+                <big-decimal-number-box  precision="10" not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="specificationSplits" col-span="4" caption="specificationSplits">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.OrderSpecificationSplit" hide-tools-column="true" not-editable="true">
+                    <column id="specification" caption="specification">
+                        <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Specification" not-editable="true"/>
+                    </column>
+                    <column id="amount" caption="amount">
+                        <big-decimal-number-box precision="10" not-editable="true"/>
+                    </column>
+                    <column id="unit" caption="unit">
+                        <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.PositionUnit" not-editable="true"/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
+    </grid-container>
+    <custom-value-widget id="com.flinty.docsflow.web.core.order.OrderItemsTableEditor">
+        <view-model>
+            <collection id="items" element-type="ENTITY" object-id="com.flinty.docsflow.common.core.model.ui.OrderPositionsTableItemEditorVM"/>
+        </view-model>
+        <view-settings></view-settings>
+        <view-validation></view-validation>
+    </custom-value-widget>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.OrderEditor">
+        <columns>
+            <column width="STANDARD"/>
+            <column width="STANDARD"/>
+            <column width="STANDARD"/>
+            <column width="REMAINING"/>
+        </columns>
+        <row>
+            <cell id="code" caption="code">
+                <text-box not-editable="true"/>
+            </cell>
+            <cell id="status" caption="status">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.OrderStatus"/>
+            </cell>
+            <cell id="supplier" caption="supplier">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Supplier" not-editable="true"/>
+            </cell>
+        </row>
+        <row height="REMAINING">
+            <cell id="positions" col-span="4">
+                <custom-value-widget ref="com.flinty.docsflow.web.core.order.OrderItemsTableEditor"/>
+            </cell>
+        </row>
+    </grid-container>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.ShowOrderDifferenceDialog">
+        <columns>
+            <column width="CUSTOM" custom-width="600px"/>
+        </columns>
+        <row>
+            <cell id="positions">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.OrderDifferenceTable" hide-tools-column="true" not-editable="true">
+                    <column id="article" caption="article" pref-width="100">
+                        <text-box not-editable="true"/>
+                    </column>
+                    <column id="name" caption="name" pref-width="300">
+                        <text-box not-editable="true"/>
+                    </column>
+                    <column id="oldAmount" caption="oldAmount" pref-width="100">
+                        <big-decimal-number-box not-editable="true"/>
+                    </column>
+                    <column id="newAmount" caption="newAmount" pref-width="100">
+                        <big-decimal-number-box not-editable="true"/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
+    </grid-container>
+</ui>

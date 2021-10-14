@@ -11,4 +11,11 @@
     <generate source="docsflow-spec-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
     <generate source="docsflow-spec-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
     <generate source="docsflow-spec-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
+    <generate source="docsflow-order-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
+    <generate source="docsflow-order-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
+    <generate source="docsflow-order-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
+    <generate source="docsflow-invoice-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
+    <generate source="docsflow-invoice-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
+    <generate source="docsflow-invoice-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
+    <generate source="docsflow-surplus-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
 </code-gen>

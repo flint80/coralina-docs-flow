@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
+    <entity id="com.flinty.docsflow.common.core.model.rest.StandardInvoiceParsedItem">
+        <collection id="fields" element-type="STRING"/>
+    </entity>
+    <entity id="com.flinty.docsflow.common.core.model.rest.BasicInvoiceParsedItem">
+        <property id="article" type="STRING"  lateinit="true"/>
+        <property id="amount" type="BIG_DECIMAL"  lateinit="true"/>
+        <property id="total" type="BIG_DECIMAL"/>
+    </entity>
+    <group id="invoice">
+        <operation id="parseStandardInvoice" handler="com.flinty.docsflow.server.core.invoice.rest.ParseStandardInvoiceRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.ParseStandardInvoiceRequest">
+                <property id="content" type="STRING" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.ParseStandardInvoiceResponse">
+                <collection id="items" element-type="ENTITY" element-class-name="com.flinty.docsflow.common.core.model.rest.StandardInvoiceParsedItem"/>
+            </response>
+        </operation>
+        <operation id="parseSchneider" handler="com.flinty.docsflow.server.core.invoice.rest.ParseSchneiderInvoiceRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.ParseSchneiderInvoiceRequest">
+                <property id="content" type="STRING" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.ParseSchneiderInvoiceResponse">
+                <collection id="items" element-type="ENTITY" element-class-name="com.flinty.docsflow.common.core.model.rest.BasicInvoiceParsedItem"/>
+            </response>
+        </operation>
+    </group>
+</rest>
+
+

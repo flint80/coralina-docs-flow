@@ -24,6 +24,14 @@ class DocsFlowCoreCommonActivator:IPluginActivator {
         DomainMetadataParser.updateDomainMetaRegistry(DomainMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-spec-domain.xml", javaClass.classLoader)
         UiMetadataParser.updateUiMetaRegistry(UiMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-spec-ui.xml", javaClass.classLoader)
         RestMetadataParser.updateRestMetaRegistry(RestMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-spec-rest.xml", javaClass.classLoader)
+        DomainMetadataParser.updateDomainMetaRegistry(DomainMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-order-domain.xml", javaClass.classLoader)
+        UiMetadataParser.updateUiMetaRegistry(UiMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-order-ui.xml", javaClass.classLoader)
+        RestMetadataParser.updateRestMetaRegistry(RestMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-order-rest.xml", javaClass.classLoader)
+        DomainMetadataParser.updateDomainMetaRegistry(DomainMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-invoice-domain.xml", javaClass.classLoader)
+        RestMetadataParser.updateRestMetaRegistry(RestMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-invoice-rest.xml", javaClass.classLoader)
+        UiMetadataParser.updateUiMetaRegistry(UiMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-invoice-ui.xml", javaClass.classLoader)
+        DomainMetadataParser.updateDomainMetaRegistry(DomainMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-surplus-domain.xml", javaClass.classLoader)
+
         WebPluginsAssociations.registerAssociations()
     }
 }

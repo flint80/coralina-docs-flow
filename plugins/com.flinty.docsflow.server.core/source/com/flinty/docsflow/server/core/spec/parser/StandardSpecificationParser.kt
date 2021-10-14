@@ -6,10 +6,9 @@ package com.flinty.docsflow.server.core.spec.parser
 
 import com.gridnine.jasmine.common.core.model.L10nMessage
 import com.gridnine.jasmine.common.core.model.Xeption
-import com.gridnine.jasmine.common.core.parser.ParserUtils
+import com.gridnine.jasmine.common.core.utils.TextUtils
 import com.gridnine.jasmine.server.reports.excel.ExcelUtils
 import org.apache.poi.ss.usermodel.Sheet
-import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.ByteArrayInputStream
 
@@ -45,13 +44,13 @@ object StandardSpecificationParser{
             val storeAmount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("H"), 5,true)
             if(toBeOrdered != null){
                 sectionStarted = true
-                if(name == null){
+                if(TextUtils.isBlank(name)){
                     throw Xeption.forEndUser(L10nMessage("в позиции ${idx+1} указана сумма заказа но не указано наименование"))
                 }
-                if(supplier == null){
+                if(TextUtils.isBlank(supplier)){
                     throw Xeption.forEndUser(L10nMessage("в позиции ${idx+1} указана сумма заказа но не указан поставщик"))
                 }
-                if(article == null){
+                if(TextUtils.isBlank(article)){
                     throw Xeption.forEndUser(L10nMessage("в позиции ${idx+1} указана сумма заказа но не указан артикул"))
                 }
                 if(amount == null){
@@ -66,10 +65,10 @@ object StandardSpecificationParser{
                 result.add(ParsedSpecificationPosition().also {
                     it.amount = amount!!
                     it.amountNote = primAmount
-                    it.article = article
-                    it.name = name
+                    it.article = article!!
+                    it.name = name!!
                     it.storeAmount = storeAmount
-                    it.supplier = supplier
+                    it.supplier = supplier!!
                     it.toBeOrdered = toBeOrdered
                     it.unit = unit
                     it.unitNote = primUnit
