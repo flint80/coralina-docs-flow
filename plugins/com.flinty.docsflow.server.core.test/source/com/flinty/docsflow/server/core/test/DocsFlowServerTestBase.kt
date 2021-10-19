@@ -16,8 +16,11 @@ import com.flinty.docsflow.server.core.spec.storage.SpecificationIndexHandler
 import com.flinty.docsflow.server.core.spec.storage.SpecificationInterceptor
 import com.flinty.docsflow.server.core.supplier.storage.SupplierIndexHandler
 import com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantsIndexHandler
+import com.flinty.docsflow.server.core.surplus.storage.SurplusIndexHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountIndexHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountStorageInterceptor
+import com.flinty.docsflow.server.core.waybill.storage.WaybillIndexHandler
+import com.flinty.docsflow.server.core.waybill.storage.WaybillInterceptor
 import com.gridnine.jasmine.common.core.app.Environment
 import com.gridnine.jasmine.common.core.meta.DomainMetaRegistry
 import com.gridnine.jasmine.common.core.meta.RestMetaRegistry
@@ -52,9 +55,13 @@ open class DocsFlowServerTestBase:StorageTestBase() {
 
         StorageRegistry.get().register(InvoiceIndexHandler())
 
+        StorageRegistry.get().register(SurplusIndexHandler())
+        StorageRegistry.get().register(WaybillIndexHandler())
+
         StorageRegistry.get().register(SpecificationInterceptor())
         StorageRegistry.get().register(OrderInterceptor())
         StorageRegistry.get().register(InvoiceInterceptor())
+        StorageRegistry.get().register(WaybillInterceptor())
 
     }
 
@@ -68,6 +75,7 @@ open class DocsFlowServerTestBase:StorageTestBase() {
         DomainMetadataParser.updateDomainMetaRegistry(result, "com/flinty/docsflow/common/core/model/docsflow-order-domain.xml", javaClass.classLoader)
         DomainMetadataParser.updateDomainMetaRegistry(result, "com/flinty/docsflow/common/core/model/docsflow-invoice-domain.xml", javaClass.classLoader)
         DomainMetadataParser.updateDomainMetaRegistry(result, "com/flinty/docsflow/common/core/model/docsflow-surplus-domain.xml", javaClass.classLoader)
+        DomainMetadataParser.updateDomainMetaRegistry(result, "com/flinty/docsflow/common/core/model/docsflow-waybill-domain.xml", javaClass.classLoader)
 
 
 

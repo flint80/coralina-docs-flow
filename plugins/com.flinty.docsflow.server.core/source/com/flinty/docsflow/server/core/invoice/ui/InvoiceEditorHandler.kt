@@ -49,6 +49,7 @@ class InvoiceEditorHandler:ObjectEditorHandler<Invoice, InvoiceEditorVM, Invoice
                 it.orderAmount = pos.orderAmount
                 it.surplus = pos.surplus
                 it.totalPrice = pos.totalPrice
+                it.surplusAmount = if(it.surplus != null) it.invoiceAmount?.subtract(it.orderAmount) else null
                 it.unit = pos.unit
                 pos.surplusSplits.forEach { sp ->
                     it.orderSplits.add(InvoiceSurplusSplitVM().also { spVM ->

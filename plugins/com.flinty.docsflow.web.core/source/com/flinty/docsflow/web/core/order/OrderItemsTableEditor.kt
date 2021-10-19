@@ -26,7 +26,7 @@ class OrderItemsTableEditor :
             fit = true
             fitColumns = true
             showPagination = false
-            selectionType = DataGridSelectionType.NONE
+            selectionType = DataGridSelectionType.SINGLE
             dataType = DataGridDataType.LOCAL
             column {
                 fieldId = "article"
@@ -85,6 +85,8 @@ class OrderItemsTableEditor :
             }
         }
     }
+
+    fun getSelectedValue() =  _node.getSelected().let { if(it.isEmpty()) null else it[0] }
 
     override fun getData(): OrderItemsTableEditorVMJS {
         return OrderItemsTableEditorVMJS().also { it.items.addAll(localData) }

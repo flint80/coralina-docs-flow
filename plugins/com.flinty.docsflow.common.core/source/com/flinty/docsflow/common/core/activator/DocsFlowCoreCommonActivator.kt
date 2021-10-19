@@ -31,6 +31,7 @@ class DocsFlowCoreCommonActivator:IPluginActivator {
         RestMetadataParser.updateRestMetaRegistry(RestMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-invoice-rest.xml", javaClass.classLoader)
         UiMetadataParser.updateUiMetaRegistry(UiMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-invoice-ui.xml", javaClass.classLoader)
         DomainMetadataParser.updateDomainMetaRegistry(DomainMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-surplus-domain.xml", javaClass.classLoader)
+        DomainMetadataParser.updateDomainMetaRegistry(DomainMetaRegistry.get(), "com/flinty/docsflow/common/core/model/docsflow-waybill-domain.xml", javaClass.classLoader)
 
         WebPluginsAssociations.registerAssociations()
     }

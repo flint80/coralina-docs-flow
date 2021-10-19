@@ -18,6 +18,7 @@
     <source id="docsflow-invoice-rest" location="source/com/flinty/docsflow/common/core/model/docsflow-invoice-rest.xml"/>
     <source id="docsflow-invoice-ui" location="source/com/flinty/docsflow/common/core/model/docsflow-invoice-ui.xml"/>
     <source id="docsflow-surplus-domain" location="source/com/flinty/docsflow/common/core/model/docsflow-surplus-domain.xml"/>
+    <source id="docsflow-waybill-domain" location="source/com/flinty/docsflow/common/core/model/docsflow-waybill-domain.xml"/>
     <generate source="docsflow-user-account-domain" targetPlugin="com.flinty.docsflow.common.core" generator="common-domain"/>
     <generate source="docsflow-user-account-ui" targetPlugin="com.flinty.docsflow.common.core" generator="common-ui"/>
     <generate source="docsflow-user-account-rest" targetPlugin="com.flinty.docsflow.common.core" generator="common-rest"/>
@@ -37,4 +38,5 @@
     <generate source="docsflow-invoice-rest" targetPlugin="com.flinty.docsflow.common.core" generator="common-rest"/>
     <generate source="docsflow-invoice-ui" targetPlugin="com.flinty.docsflow.common.core" generator="common-ui"/>
     <generate source="docsflow-surplus-domain" targetPlugin="com.flinty.docsflow.common.core" generator="common-domain"/>
+    <generate source="docsflow-waybill-domain" targetPlugin="com.flinty.docsflow.common.core" generator="common-domain"/>
 </code-gen>

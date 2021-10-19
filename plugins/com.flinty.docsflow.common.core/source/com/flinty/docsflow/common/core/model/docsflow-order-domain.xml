@@ -6,7 +6,7 @@
         <enum-item id="FIXED"/>
     </enum>
     <nested-document id="com.flinty.docsflow.common.core.model.domain.OrderSurplusSplit">
-        <property id="surplus" type="ENTITY_REFERENCE" non-nullable="true" class-name="com.flinty.docsflow.common.core.model.domain.Specification"/>
+        <property id="surplus" type="ENTITY_REFERENCE" non-nullable="true" class-name="com.flinty.docsflow.common.core.model.domain.Surplus"/>
         <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
     </nested-document>
     <nested-document id="com.flinty.docsflow.common.core.model.domain.OrderSpecificationSplit">
@@ -18,6 +18,7 @@
         <property id="name" type="STRING" non-nullable="true"/>
         <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
         <property id="unit" type="ENUM" non-nullable="true" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit"/>
+        <property id="replacementFor" type="STRING"/>
         <collection id="specificationSplits" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.OrderSpecificationSplit"/>
         <collection id="surplusSplits" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.OrderSurplusSplit"/>
     </nested-document>

@@ -83,12 +83,12 @@ class InvoiceItemsTableEditor :
                 width = 60
             }
             column {
-                fieldId = "surplus"
+                fieldId = "surplusAmount"
                 title = "Излишек"
                 sortable = true
-                horizontalAlignment = WebDataHorizontalAlignment.LEFT
+                horizontalAlignment = WebDataHorizontalAlignment.RIGHT
                 resizable = true
-                formatter = MiscUtilsJS.createListFormatter(DatabasePropertyTypeJS.ENTITY_REFERENCE)
+                formatter = MiscUtilsJS.createListFormatter(DatabasePropertyTypeJS.BIG_DECIMAL)
                 width = 60
             }
         }

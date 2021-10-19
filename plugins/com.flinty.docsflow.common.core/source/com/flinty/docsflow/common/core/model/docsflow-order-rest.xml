@@ -25,6 +25,18 @@
                 <property type="STRING" id="invoiceUid" lateinit="true"/>
             </response>
         </operation>
+        <operation id="replacePosition" handler="com.flinty.docsflow.server.core.order.rest.ReplaceOrderPositionRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.ReplaceOrderPositionRestRequest">
+                <property id="orderUid" type="STRING" non-nullable="true"/>
+                <property id="oldArticle" type="STRING" non-nullable="true"/>
+                <property id="newArticle" type="STRING"/>
+                <property id="newName" type="STRING"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.ReplaceOrderPositionRestResponse">
+                <property id="vv" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ReplaceOrderPositionDialogVV"/>
+                <collection id="modifiedSpecifications" element-type="ENTITY_REFERENCE" element-class-name="com.flinty.docsflow.common.core.model.domain.Specification"/>
+            </response>
+        </operation>
     </group>
 </rest>
 

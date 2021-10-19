@@ -8,6 +8,7 @@
         <action id="showDifference" action-handler="com.flinty.docsflow.web.core.order.ShowOrderDifferenceEditorObjectButtonHandler"/>
         <action id="download" action-handler="com.flinty.docsflow.web.core.order.DownloadOrderEditorObjectButtonHandler"/>
         <action id="createInvoice" action-handler="com.flinty.docsflow.web.core.order.CreateInvoiceOrderEditorObjectButtonHandler"/>
+        <action id="replacePosition" action-handler="com.flinty.docsflow.web.core.order.ReplaceOrderPositionEditorObjectButtonHandler"  display-handler-ref="edit-state-handler"/>
         <group id="docsflow.core.order.additional">
             <action-ref id="standard.showVersions"/>
         </group>
@@ -105,6 +106,23 @@
                         <big-decimal-number-box not-editable="true"/>
                     </column>
                 </table-box>
+            </cell>
+        </row>
+    </grid-container>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.ReplaceOrderPositionDialog">
+        <row>
+            <cell id="oldArticle" caption="oldArticle">
+                <text-box not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="newArticle" caption="newArticle">
+                <text-box/>
+            </cell>
+        </row>
+        <row>
+            <cell id="newName" caption="newName">
+                <text-box/>
             </cell>
         </row>
     </grid-container>

@@ -21,9 +21,12 @@ import com.flinty.docsflow.server.core.spec.ui.SpecificationEditorHandler
 import com.flinty.docsflow.server.core.supplier.storage.SupplierIndexHandler
 import com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantsIndexHandler
 import com.flinty.docsflow.server.core.supplier.ui.SupplierEditorHandler
+import com.flinty.docsflow.server.core.surplus.storage.SurplusIndexHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountIndexHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountStorageInterceptor
 import com.flinty.docsflow.server.core.userAccount.ui.UserAccountEditorHandler
+import com.flinty.docsflow.server.core.waybill.storage.WaybillIndexHandler
+import com.flinty.docsflow.server.core.waybill.storage.WaybillInterceptor
 import com.flinty.docsflow.server.core.web.DocsFlowAuthFilter
 import com.flinty.docsflow.server.core.workspace.storage.DocsFlowWorkspaceProvider
 import com.gridnine.jasmine.common.core.app.Environment
@@ -70,10 +73,13 @@ class DocsFlowServerCoreActivator:IPluginActivator {
         StorageRegistry.get().register(OrderIndexHandler())
         StorageRegistry.get().register(InvoiceIndexHandler())
         StorageRegistry.get().register(SupplierIndexHandler())
+        StorageRegistry.get().register(SurplusIndexHandler())
+        StorageRegistry.get().register(WaybillIndexHandler())
 
         StorageRegistry.get().register(SpecificationInterceptor())
         StorageRegistry.get().register(OrderInterceptor())
         StorageRegistry.get().register(InvoiceInterceptor())
+        StorageRegistry.get().register(WaybillInterceptor())
 
         ObjectEditorsRegistry.get().register(SupplierEditorHandler())
         ObjectEditorsRegistry.get().register(UserAccountEditorHandler())

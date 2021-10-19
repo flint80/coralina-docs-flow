@@ -46,11 +46,14 @@
             </cell>
         </row>
         <row>
-            <cell id="surplus" caption="surplus" col-span="2">
+            <cell id="surplus" caption="surplus">
                 <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Surplus" not-editable="true"/>
             </cell>
+            <cell id="surplusAmount" caption="surplusAmount">
+                <big-decimal-number-box not-editable="true"/>
+            </cell>
             <cell id="totalPrice" caption="totalPrice" col-span="2">
-                <big-decimal-number-box not-editable="true"   precision="10"/>
+                <big-decimal-number-box  precision="10"/>
             </cell>
         </row>
         <row>
@@ -65,6 +68,7 @@
                 </table-box>
             </cell>
         </row>
+
     </grid-container>
     <custom-value-widget id="com.flinty.docsflow.web.core.invoice.InvoiceItemsTableEditor">
         <view-model>

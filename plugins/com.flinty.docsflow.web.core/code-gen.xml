@@ -18,4 +18,5 @@
     <generate source="docsflow-invoice-rest" targetPlugin="com.flinty.docsflow.web.core" generator="web-rest"/>
     <generate source="docsflow-invoice-ui" targetPlugin="com.flinty.docsflow.web.core" generator="web-ui"/>
     <generate source="docsflow-surplus-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
+    <generate source="docsflow-waybill-domain" targetPlugin="com.flinty.docsflow.web.core" generator="web-domain"/>
 </code-gen>

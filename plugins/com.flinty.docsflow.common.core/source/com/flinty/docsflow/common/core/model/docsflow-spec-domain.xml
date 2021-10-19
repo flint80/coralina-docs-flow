@@ -24,6 +24,7 @@
         <property id="toBeOrdered" type="BIG_DECIMAL" non-nullable="true"/>
         <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder"/>
         <property id="orderAmount" type="BIG_DECIMAL"/>
+        <property id="replacementFor" type="STRING" />
     </nested-document>
     <document id="com.flinty.docsflow.common.core.model.domain.Specification">
         <property id="name" type="STRING" non-nullable="true"/>
