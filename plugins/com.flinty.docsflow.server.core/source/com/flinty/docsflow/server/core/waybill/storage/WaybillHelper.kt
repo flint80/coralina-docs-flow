@@ -14,6 +14,7 @@ object WaybillHelper {
         result.invoice = EntityUtils.toReference(invoice)
         result.status = WaybillStatus.DRAFT
         result.supplier = invoice.supplier
+        result.number = "Н-${invoice.number}"
         invoice.positions.forEach { pos ->
             result.positions.add(WaybillPosition().also {
                 it.article = pos.article

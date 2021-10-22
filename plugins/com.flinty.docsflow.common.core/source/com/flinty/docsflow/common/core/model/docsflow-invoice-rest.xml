@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
-    <entity id="com.flinty.docsflow.common.core.model.rest.StandardInvoiceParsedItem">
+    <entity id="com.flinty.docsflow.common.core.model.rest.StandardExcelParsedItem">
         <collection id="fields" element-type="STRING"/>
     </entity>
     <entity id="com.flinty.docsflow.common.core.model.rest.BasicInvoiceParsedItem">
@@ -9,12 +9,12 @@
         <property id="total" type="BIG_DECIMAL"/>
     </entity>
     <group id="invoice">
-        <operation id="parseStandardInvoice" handler="com.flinty.docsflow.server.core.invoice.rest.ParseStandardInvoiceRestHandler">
-            <request id="com.flinty.docsflow.common.core.model.rest.ParseStandardInvoiceRequest">
+        <operation id="parseStandardInvoice" handler="com.flinty.docsflow.server.core.invoice.rest.ParseStandardExcelRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.ParseStandardExcelRequest">
                 <property id="content" type="STRING" lateinit="true"/>
             </request>
-            <response id="com.flinty.docsflow.common.core.model.rest.ParseStandardInvoiceResponse">
-                <collection id="items" element-type="ENTITY" element-class-name="com.flinty.docsflow.common.core.model.rest.StandardInvoiceParsedItem"/>
+            <response id="com.flinty.docsflow.common.core.model.rest.ParseStandardExcelResponse">
+                <collection id="items" element-type="ENTITY" element-class-name="com.flinty.docsflow.common.core.model.rest.StandardExcelParsedItem"/>
             </response>
         </operation>
         <operation id="parseSchneider" handler="com.flinty.docsflow.server.core.invoice.rest.ParseSchneiderInvoiceRestHandler">
@@ -23,6 +23,14 @@
             </request>
             <response id="com.flinty.docsflow.common.core.model.rest.ParseSchneiderInvoiceResponse">
                 <collection id="items" element-type="ENTITY" element-class-name="com.flinty.docsflow.common.core.model.rest.BasicInvoiceParsedItem"/>
+            </response>
+        </operation>
+        <operation id="createWaybill" handler="com.flinty.docsflow.server.core.invoice.rest.CreateWaybillRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.CreateWaybillRequest">
+                <property id="invoiceUid" type="STRING" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.CreateWaybillResponse">
+                <property id="waybillUid" type="STRING" lateinit="true"/>
             </response>
         </operation>
     </group>

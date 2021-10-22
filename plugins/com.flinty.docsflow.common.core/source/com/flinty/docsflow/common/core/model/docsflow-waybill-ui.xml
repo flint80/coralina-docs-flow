@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui xmlns="http://gridnine.com/jasmine/ui">
+    <enum id="com.flinty.docsflow.common.core.model.domain.WaybillColumnType">
+        <enum-item id="IGNORE"/>
+        <enum-item id="ARTICLE"/>
+        <enum-item id="POSITION"/>
+        <enum-item id="AMOUNT"/>
+    </enum>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.WaybillIndex">
+        <action-ref id="deleteSelectedListItems"/>
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.Waybill">
+        <action-ref id="standard.saveObject"/>
+        <action id="docsflow.core.waybill.import" action-handler="com.flinty.docsflow.web.core.waybill.ImportWaybillEditorObjectButtonHandler" display-handler-ref="edit-state-handler"/>
+        <action id="docsflow.core.waybill.storeReport" action-handler="com.flinty.docsflow.web.core.waybill.StoreReportWaybillEditorObjectButtonHandler"/>
+        <group id="docsflow.core.waybill.additional">
+            <action-ref id="standard.showVersions"/>
+        </group>
+    </actions-group>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.WaybillPositionsTableItemEditor">
+        <columns>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+        </columns>
+        <row>
+            <cell id="position" caption="position">
+                <integer-number-box/>
+            </cell>
+            <cell id="name" caption="name" col-span="4">
+                <text-box not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="article" caption="article">
+                <text-box not-editable="true"/>
+            </cell>
+            <cell id="amount" caption="amount">
+                <big-decimal-number-box   precision="10"/>
+            </cell>
+            <cell id="invoiceAmount" caption="invoiceAmount">
+                <big-decimal-number-box  not-editable="true" precision="10"/>
+            </cell>
+            <cell id="unit" caption="unit">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.PositionUnit" not-editable="true"/>
+            </cell>
+            <cell id="storeAmount" caption="storeAmount">
+                <big-decimal-number-box  not-editable="true" precision="10"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="specificationSplits" col-span="5" caption="specificationSplits">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.WaybillSpecificationSplit" hide-tools-column="true" not-editable="true">
+                    <column id="specification" caption="specification">
+                        <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Specification" not-editable="true"/>
+                    </column>
+                    <column id="amount" caption="amount">
+                        <big-decimal-number-box precision="10" not-editable="true"/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
+    </grid-container>
+    <custom-value-widget id="com.flinty.docsflow.web.core.waybill.WaybillItemsTableEditor">
+        <view-model>
+            <collection id="items" element-type="ENTITY" object-id="com.flinty.docsflow.common.core.model.ui.WaybillPositionsTableItemEditorVM"/>
+        </view-model>
+        <view-settings></view-settings>
+        <view-validation></view-validation>
+    </custom-value-widget>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.WaybillEditor">
+        <columns>
+            <column width="STANDARD"/>
+            <column width="STANDARD"/>
+            <column width="REMAINING"/>
+        </columns>
+        <row>
+            <cell id="number" caption="number">
+                <text-box/>
+            </cell>
+            <cell id="status" caption="status">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.WaybillStatus"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="supplier" caption="supplier">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Supplier" not-editable="true"/>
+            </cell>
+            <cell id="invoice" caption="invoice">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Invoice" not-editable="true"/>
+            </cell>
+        </row>
+        <row height="REMAINING">
+            <cell id="positions" col-span="3" caption="positions">
+                <custom-value-widget ref="com.flinty.docsflow.web.core.waybill.WaybillItemsTableEditor"/>
+            </cell>
+        </row>
+    </grid-container>
+</ui>

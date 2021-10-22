@@ -51,6 +51,7 @@ class InvoiceEditorHandler:ObjectEditorHandler<Invoice, InvoiceEditorVM, Invoice
                 it.totalPrice = pos.totalPrice
                 it.surplusAmount = if(it.surplus != null) it.invoiceAmount?.subtract(it.orderAmount) else null
                 it.unit = pos.unit
+                it.deliveryDate = pos.deliveryDate
                 pos.surplusSplits.forEach { sp ->
                     it.orderSplits.add(InvoiceSurplusSplitVM().also { spVM ->
                         spVM.uid = sp.uid
@@ -58,8 +59,22 @@ class InvoiceEditorHandler:ObjectEditorHandler<Invoice, InvoiceEditorVM, Invoice
                         spVM.order = sp.order
                     })
                 }
+                pos.specificationSplits.forEach { sp ->
+                    it.specificationSplits.add(InvoiceSpecificationSplitVM().also { spVM ->
+                        spVM.uid = sp.uid
+                        spVM.amount = sp.amount
+                        spVM.specification = sp.specification
+                    })
+                }
             })
         }
+        entity.waybills.withIndex().forEach {wbEntry ->
+            vmEntity.waybills.add(InvoiceWaybillSplitVM().also {
+                it.uid = "waybill-${entity.uid}-${wbEntry.index}"
+                it.waybill = wbEntry.value
+            })
+        }
+
     }
 
     override fun getTitle(entity: Invoice, vmEntity: InvoiceEditorVM, vsEntity: InvoiceEditorVS, ctx: MutableMap<String, Any?>): String? {
@@ -73,6 +88,7 @@ class InvoiceEditorHandler:ObjectEditorHandler<Invoice, InvoiceEditorVM, Invoice
             val pos = entity.positions.find { it.article == vmPos.article }!!
             pos.invoiceAmount = vmPos.invoiceAmount
             pos.totalPrice = vmPos.totalPrice
+            pos.deliveryDate = vmPos.deliveryDate
         }
     }
 

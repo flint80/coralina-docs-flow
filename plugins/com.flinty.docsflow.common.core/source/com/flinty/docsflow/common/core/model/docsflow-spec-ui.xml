@@ -8,7 +8,8 @@
     <actions-group id="com.flinty.docsflow.common.core.model.domain.Specification">
         <action-ref id="standard.saveObject"/>
         <action id="check" action-handler="com.flinty.docsflow.web.core.spec.CheckSpecificationEditorObjectButtonHandler"/>
-        <action id="deleteItems" action-handler="com.flinty.docsflow.web.core.spec.DeleteItemsSpecificationEditorObjectButtonHandler"/>
+        <action id="deleteItems" action-handler="com.flinty.docsflow.web.core.spec.DeleteItemsSpecificationEditorObjectButtonHandler"  display-handler-ref="edit-state-handler"/>
+        <action id="reimport" action-handler="com.flinty.docsflow.web.core.spec.ReimportSpecificationEditorObjectButtonHandler" display-handler-ref="edit-state-handler"/>
         <group id="docsflow.core.spec.additional">
             <action-ref id="standard.showVersions"/>
         </group>

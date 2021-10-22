@@ -8,15 +8,21 @@
         <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" non-nullable="true"/>
         <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
     </nested-document>
+    <nested-document id="com.flinty.docsflow.common.core.model.domain.InvoiceSpecificationSplit">
+        <property id="specification" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Specification" non-nullable="true"/>
+        <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
+    </nested-document>
     <nested-document id="com.flinty.docsflow.common.core.model.domain.InvoicePosition">
         <property id="article" type="STRING" non-nullable="true"/>
         <property id="name" type="STRING" non-nullable="true"/>
         <property id="orderAmount" type="BIG_DECIMAL" non-nullable="true"/>
         <property id="invoiceAmount" type="BIG_DECIMAL" />
         <property id="totalPrice" type="BIG_DECIMAL"/>
+        <property id="deliveryDate" type="LOCAL_DATE"/>
         <property id="unit" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit" non-nullable="true"/>
         <property id="surplus" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Surplus"/>
         <collection id="surplusSplits" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.InvoiceSurplusSplit"/>
+        <collection id="specificationSplits" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.InvoiceSpecificationSplit"/>
     </nested-document>
    <document id="com.flinty.docsflow.common.core.model.domain.Invoice">
        <property id="vatIncluded" type="BOOLEAN" non-nullable="true"/>
@@ -25,6 +31,7 @@
        <property id="supplier" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Supplier" non-nullable="true"/>
        <property id="order" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" non-nullable="true"/>
        <collection id="positions" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.InvoicePosition"/>
+       <collection id="waybills" element-type="ENTITY_REFERENCE" element-class-name="com.flinty.docsflow.common.core.model.domain.Waybill"/>
        <code-injection>
            override fun toString():String = number?:"???"
        </code-injection>

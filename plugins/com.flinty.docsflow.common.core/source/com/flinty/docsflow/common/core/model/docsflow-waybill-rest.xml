@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rest xmlns="http://gridnine.com/jasmine/rest" id="docsflow">
+    <group id="waybill">
+        <operation id="generateStoreReport" handler="com.flinty.docsflow.server.core.waybill.rest.GenerateStoreReportRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.GenerateStoreReportRequest">
+                <property id="waybillUid" type="STRING" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.GenerateStoreReportlResponse">
+                <property id="result" type="ENTITY" class-name="com.gridnine.jasmine.common.standard.rest.FileDataDT" lateinit="true"/>
+            </response>
+        </operation>
+    </group>
+</rest>
+
+

@@ -10,6 +10,14 @@
                 <property id="objectUid" type="STRING"/>
             </response>
         </operation>
+        <operation id="generateSpecReport" handler="com.flinty.docsflow.server.core.project.rest.GenerateSpecReportRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.GenerateSpecReportRequest">
+                <property id="projectUid" type="STRING" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.GenerateSpecReportResponse">
+                <property id="result" type="ENTITY" class-name="com.gridnine.jasmine.common.standard.rest.FileDataDT"/>
+            </response>
+        </operation>
     </group>
 </rest>
 

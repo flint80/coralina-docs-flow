@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui xmlns="http://gridnine.com/jasmine/ui">
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.SurplusIndex">
+    </actions-group>
+    <actions-group id="com.flinty.docsflow.common.core.model.domain.Surplus">
+        <action-ref id="standard.saveObject"/>
+        <group id="docsflow.core.surplus.additional">
+            <action-ref id="standard.showVersions"/>
+        </group>
+    </actions-group>
+    <grid-container id="com.flinty.docsflow.common.core.model.ui.SurplusEditor">
+        <columns>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+            <column width="CUSTOM" custom-width="200px"/>
+        </columns>
+        <row>
+            <cell id="name" caption="name" col-span="3">
+                <text-box not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="article" caption="article">
+                <text-box not-editable="true"/>
+            </cell>
+            <cell id="amount" caption="amount">
+                <big-decimal-number-box not-editable="true"/>
+            </cell>
+            <cell id="unit" caption="unit">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.PositionUnit" not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="status" caption="status">
+                <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.SurplusStatus" not-editable="true"/>
+            </cell>
+            <cell id="order" caption="order">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" not-editable="true"/>
+            </cell>
+            <cell id="invoice" caption="invoice">
+                <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Invoice" not-editable="true"/>
+            </cell>
+        </row>
+        <row>
+            <cell id="splits" col-span="3" caption="splits">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.SurplusOrderSplitTable" hide-tools-column="true" not-editable="true">
+                    <column id="order" caption="order">
+                        <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.SpecificationOrder" not-editable="true"/>
+                    </column>
+                    <column id="amount" caption="amount">
+                        <big-decimal-number-box precision="10" not-editable="true"/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
+    </grid-container>
+</ui>

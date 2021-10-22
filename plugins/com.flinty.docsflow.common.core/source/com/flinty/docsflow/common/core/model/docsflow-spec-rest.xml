@@ -20,6 +20,16 @@
                 <property id="objectUid" type="STRING"/>
             </response>
         </operation>
+        <operation id="reimport" handler="com.flinty.docsflow.server.core.spec.rest.ReimportSpecificationRestHandler">
+            <request id="com.flinty.docsflow.common.core.model.rest.ReimportSpecificationRequest">
+                <property id="fileData" type="ENTITY" class-name="com.gridnine.jasmine.common.standard.rest.FileDataDT" lateinit="true"/>
+                <property id="dialogVM" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialogVM" />
+                <property id="specificationUid" type="STRING" lateinit="true"/>
+            </request>
+            <response id="com.flinty.docsflow.common.core.model.rest.ReimportSpecificationResponse">
+                <property id="dialogVV" type="ENTITY" class-name="com.flinty.docsflow.common.core.model.ui.ProcessSuppliersDialogVV"/>
+            </response>
+        </operation>
         <operation id="convertSpecialSpecification" handler="com.flinty.docsflow.server.core.spec.rest.ConvertSpecialSpecificationRestHandler">
             <request id="com.flinty.docsflow.common.core.model.rest.ConvertSpecialSpecificationRequest">
                 <property id="content" type="STRING" lateinit="true"/>

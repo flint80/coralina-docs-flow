@@ -48,7 +48,7 @@ class BasicWaybillTest : DocsFlowServerTestBase() {
         var invoice = InvoiceHelper.createInvoice(order)
         invoice.status = InvoiceStatus.FIXED
         invoice.number = "001"
-        invoice.positions[0].invoiceAmount = 2.toBigDecimal()
+        invoice.positions[0].invoiceAmount = 4.toBigDecimal()
         Storage.get().saveDocument(invoice)
         val spec2 = Specification()
         spec2.name = "Test specification 2"
@@ -84,11 +84,11 @@ class BasicWaybillTest : DocsFlowServerTestBase() {
             Assert.assertEquals(1, pos.surplusSplits.size)
             val split = pos.surplusSplits[0]
             Assert.assertEquals(order2Ref, split.order)
-            assertEquals(1, split.amount)
+            assertEquals(2, split.amount)
         }
         run{
             Assert.assertEquals(SurplusStatus.DRAFT, surplus.status)
-            assertEquals(1, surplus.amount)
+            assertEquals(3, surplus.amount)
             Assert.assertEquals("pos1", surplus.article)
             Assert.assertEquals(invoiceRef, surplus.invoice)
             Assert.assertEquals("Position 1", surplus.name)
@@ -97,10 +97,10 @@ class BasicWaybillTest : DocsFlowServerTestBase() {
             Assert.assertEquals(1, surplus.splits.size)
             val split = surplus.splits[0]
             Assert.assertEquals(order2Ref, split.order)
-            assertEquals(1, split.amount)
+            assertEquals(2, split.amount)
         }
         val waybill = WaybillHelper.createWaybill(invoice)
-        waybill.positions[0].amount = 2.toBigDecimal()
+        waybill.positions[0].amount = 4.toBigDecimal()
         waybill.status = WaybillStatus.FIXED
         Storage.get().saveDocument(waybill)
         surplus = findSurplus()
@@ -112,13 +112,15 @@ class BasicWaybillTest : DocsFlowServerTestBase() {
         run {
             val specData = waybill.positions[0].specificationsSplit[0]
             assertEquals(1, specData.amount)
-            Assert.assertEquals(spec2.uid , specData.specification.uid)
+            Assert.assertEquals(spec1.uid , specData.specification.uid)
         }
         run {
             val specData = waybill.positions[0].specificationsSplit[1]
-            assertEquals(1, specData.amount)
-            Assert.assertEquals(spec1.uid , specData.specification.uid)
+            assertEquals(2, specData.amount)
+            Assert.assertEquals(spec2.uid , specData.specification.uid)
         }
+
+        assertEquals(1, waybill.positions[0].storeAmount!!)
     }
 
     private fun findSurplus(): Surplus {

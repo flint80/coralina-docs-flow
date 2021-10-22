@@ -2,6 +2,7 @@
 <ui xmlns="http://gridnine.com/jasmine/ui">
     <actions-group id="com.flinty.docsflow.common.core.model.domain.Project">
         <action-ref id="standard.saveObject"/>
+        <action id="docsflow.core.project.generateSpecReport" action-handler="com.flinty.docsflow.web.core.project.GenerateSpecReportProjectEditorObjectButtonHandler"/>
         <group id="docsflow.core.project.additional">
             <action-ref id="standard.showVersions"/>
         </group>

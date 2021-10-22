@@ -239,6 +239,46 @@ class DocsFlowWorkspaceProvider : WorkspaceProvider {
             }
             result.groups.add(group)
         }
+        run {
+            val group = WorkspaceGroup()
+            group.displayName = "Накладные"
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(WaybillIndex.waybillNumberProperty.name)
+                item.columns.add(WaybillIndex.statusProperty.name)
+                item.columns.add(WaybillIndex.invoiceProperty.name)
+                item.columns.add(WaybillIndex.supplierProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = WaybillIndex.waybillNumberProperty.name
+                item.displayName = "Все накладные"
+                item.listId = WaybillIndex::class.qualifiedName
+                group.items.add(item)
+            }
+            run {
+                val item = ListWorkspaceItem()
+                item.columns.add(WaybillIndex.waybillNumberProperty.name)
+                item.columns.add(WaybillIndex.statusProperty.name)
+                item.columns.add(WaybillIndex.invoiceProperty.name)
+                item.columns.add(WaybillIndex.supplierProperty.name)
+                val order = SortOrder()
+                order.orderType = SortOrderType.ASC
+                order.field = SurplusIndex.nameProperty.name
+                item.displayName = "Черновики(накладные)"
+                item.listId = WaybillIndex::class.qualifiedName
+                item.criterions.add(
+                    SimpleWorkspaceCriterion().also {
+                        it.property = WaybillIndex.statusProperty.name
+                        it.condition = WorkspaceSimpleCriterionCondition.EQUALS
+                        it.value = WorkspaceSimpleCriterionEnumValues().also { crit ->
+                            crit.enumClassName = WaybillStatus::class.qualifiedName+"JS"
+                            crit.values.add(WaybillStatus.DRAFT.name)
+                        }
+                    })
+                group.items.add(item)
+            }
+            result.groups.add(group)
+        }
         saveWorkspace(result)
         return result
     }

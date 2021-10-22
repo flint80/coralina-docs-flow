@@ -13,9 +13,9 @@
         <property id="status" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.SurplusStatus" non-nullable="true"/>
         <property id="invoice" type="ENTITY_REFERENCE" class-name="com.flinty.docsflow.common.core.model.domain.Invoice" non-nullable="true"/>
         <property id="article" type="STRING" non-nullable="true"/>
-        <property id="name" type="STRING" non-nullable="true"/>
         <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
         <property id="unit" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit" non-nullable="true"/>
+        <property id="name" type="STRING" non-nullable="true"/>
         <collection id="splits" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.SurplusSplit"/>
         <code-injection>
             override fun toString():String = "${article}-${amount}"

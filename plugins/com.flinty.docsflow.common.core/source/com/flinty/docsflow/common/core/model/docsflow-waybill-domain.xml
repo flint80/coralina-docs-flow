@@ -9,11 +9,13 @@
         <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
     </nested-document>
     <nested-document id="com.flinty.docsflow.common.core.model.domain.WaybillPosition">
+        <property id="positionNumber" type="INT"/>
         <property id="article" type="STRING" non-nullable="true"/>
         <property id="name" type="STRING" non-nullable="true"/>
         <property id="amount" type="BIG_DECIMAL" non-nullable="true"/>
         <property id="invoiceAmount" type="BIG_DECIMAL" non-nullable="true"/>
         <property id="unit" type="ENUM" class-name="com.flinty.docsflow.common.core.model.domain.PositionUnit" non-nullable="true"/>
+        <property id="storeAmount" type="BIG_DECIMAL"/>
         <collection id="specificationsSplit" element-type="NESTED_DOCUMENT" element-class-name="com.flinty.docsflow.common.core.model.domain.WaybillSpecificationSplit"/>
     </nested-document>
    <document id="com.flinty.docsflow.common.core.model.domain.Waybill">

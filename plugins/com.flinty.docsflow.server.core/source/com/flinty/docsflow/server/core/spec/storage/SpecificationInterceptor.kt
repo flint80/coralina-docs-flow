@@ -5,6 +5,7 @@
 package com.flinty.docsflow.server.core.spec.storage
 
 import com.flinty.docsflow.common.core.model.domain.*
+import com.flinty.docsflow.server.core.invoice.storage.InvoiceInterceptor
 import com.flinty.docsflow.server.core.spec.common.SpecificationUtils
 import com.gridnine.jasmine.common.core.model.*
 import com.gridnine.jasmine.common.core.serialization.SerializationProvider
@@ -62,6 +63,7 @@ class SpecificationInterceptor : StorageInterceptor {
                         it.status = OrderStatus.DRAFT
                         it.code = "O-${SequenceNumberGenerator.get().incrementAndGet("O")}"
                         it.supplier = supp
+                        context.globalContext.parameters[it.uid] = it
                     }
                 updateOrder(
                     appropriateOrder,
@@ -75,10 +77,10 @@ class SpecificationInterceptor : StorageInterceptor {
                 Storage.get().saveDocument(appropriateOrder)
             }
             surplusses.forEach {
-                Storage.get().saveDocument(it)
+                Storage.get().saveDocument(it, skipInterceptors = true)
             }
             invoices.forEach {
-                Storage.get().saveDocument(it)
+                Storage.get().saveDocument(it, skipInterceptors = true)
             }
             if (newSpecification.positions.any {
                     val res = it.orderAmount?.compareTo(it.toBeOrdered) != 0
@@ -274,6 +276,7 @@ class SpecificationInterceptor : StorageInterceptor {
                                         it.amount = addedAmount
                                         it.order = orderRef
                                     })
+                                    InvoiceInterceptor.updateSpecificationSplits(invoice, pos, context)
                                     invoices.add(invoice)
                                 }
                             }

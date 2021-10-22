@@ -5,7 +5,7 @@
 package com.flinty.docsflow.web.core.invoice
 
 import com.flinty.docsflow.common.core.model.domain.StandardInvoiceColumnTypeJS
-import com.flinty.docsflow.common.core.model.rest.ParseStandardInvoiceRequestJS
+import com.flinty.docsflow.common.core.model.rest.ParseStandardExcelRequestJS
 import com.flinty.docsflow.common.core.model.ui.InvoiceEditor
 import com.flinty.docsflow.web.core.DocsflowRestClient
 import com.gridnine.jasmine.common.core.model.BaseVMJS
@@ -21,9 +21,7 @@ import com.gridnine.jasmine.web.standard.editor.ObjectEditorTool
 import com.gridnine.jasmine.web.standard.editor.WebEditor
 import com.gridnine.jasmine.web.standard.utils.StandardUiUtils
 import com.gridnine.jasmine.web.standard.widgets.*
-import kotlinx.browser.document
 import kotlinx.browser.window
-import kotlinx.coroutines.await
 
 class ImportStandardInvoiceEditorObjectButtonHandler:
     ObjectEditorTool<InvoiceEditor> {
@@ -33,7 +31,7 @@ class ImportStandardInvoiceEditorObjectButtonHandler:
         window.navigator.clipboard.readText().then { value ->
             if(actual){
                launch {
-                   val result = DocsflowRestClient.docsflow_invoice_parseStandardInvoice(ParseStandardInvoiceRequestJS().also {
+                   val result = DocsflowRestClient.docsflow_invoice_parseStandardInvoice(ParseStandardExcelRequestJS().also {
                        it.content = value
                    })
                    val vm = StandardInvoiceParseDialogVM().also {

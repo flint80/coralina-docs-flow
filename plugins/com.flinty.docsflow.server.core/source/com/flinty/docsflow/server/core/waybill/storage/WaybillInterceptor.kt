@@ -20,78 +20,67 @@ class WaybillInterceptor : StorageInterceptor {
             val oldWaybill = context.globalContext.oldObject as Waybill?
             if (oldWaybill?.status == WaybillStatus.FIXED && doc.status != WaybillStatus.FIXED) {
                 unholdEntities(oldWaybill, context)
-            }else if(oldWaybill?.status != WaybillStatus.FIXED && doc.status == WaybillStatus.FIXED){
-                val waybillRef = EntityUtils.toReference(doc)
+            } else if (oldWaybill?.status != WaybillStatus.FIXED && doc.status == WaybillStatus.FIXED) {
+                val waybillRef = EntityUtils.toReference(doc) as ObjectReference<Waybill>
                 val relatedWaybills = Storage.get().searchDocuments(WaybillIndex::class, searchQuery {
-                    where { eq(WaybillIndex.invoiceProperty, doc.invoice)
-                        ne(BaseIndex.documentField, waybillRef)}
-                }).map { SpecificationUtils.getOrLoad(it.document, context) !!}
+                    where {
+                        eq(WaybillIndex.invoiceProperty, doc.invoice)
+                        ne(BaseIndex.documentField, waybillRef)
+                    }
+                }).map { SpecificationUtils.getOrLoad(it.document, context)!! }
                 val invoice = SpecificationUtils.getOrLoad(doc.invoice, context)!!
                 invoice.status = InvoiceStatus.FIXED
-                Storage.get().saveDocument(invoice)
-                doc.positions.forEach {wbPos ->
-                    var remains = wbPos.amount
-                    val invoicePos = invoice.positions.find { it.article == wbPos.article}!!
+                invoice.waybills.remove(waybillRef)
+                invoice.waybills.add(waybillRef)
+                Storage.get().saveDocument(invoice, skipInterceptors = true)
+                doc.positions.forEach { wbPos ->
+                    val invoicePos = invoice.positions.find { it.article == wbPos.article }!!
                     val surplus = SpecificationUtils.getOrLoad(invoicePos.surplus, context)
-                    if(surplus != null){
+                    if (surplus != null) {
                         surplus.status = SurplusStatus.FIXED
-                        Storage.get().saveDocument(surplus)
-                        surplus.splits.forEach {ss ->
-                            val order = SpecificationUtils.getOrLoad(ss.order, context)!!
-                            val orderPos = order.positions.find { it.article == surplus.article }!!
-                            orderPos.specificationSplits.forEach { specSplit ->
-                                val amount = calculateAmount(remains, if(ss.amount < specSplit.amount) ss.amount else specSplit.amount, specSplit.specification, relatedWaybills, context)
-                                if(amount > BigDecimal.ZERO){
-                                    wbPos.specificationsSplit.add(WaybillSpecificationSplit().also {
-                                        it.amount = amount
-                                        it.specification = specSplit.specification
-                                    })
-                                    remains -= amount
-                                }
-                            }
-                        }
+                        Storage.get().saveDocument(surplus, skipInterceptors = true)
                     }
-                    val order = SpecificationUtils.getOrLoad(invoice.order, context)!!
-                    val orderPos = order.positions.find { it.article == invoicePos.article }!!
-                    orderPos.specificationSplits.forEach { specSplit ->
-                        val amount = calculateAmount(remains, specSplit.amount, specSplit.specification, relatedWaybills, context)
-                        if(amount > BigDecimal.ZERO){
+                    var remains = wbPos.amount
+                    invoicePos.specificationSplits.forEach { specSplit ->
+                        var amount = if (remains > specSplit.amount) specSplit.amount else remains
+                        amount -= relatedWaybills.sumOf {
+                            val otherPos = it.positions.find { it.article == wbPos.article }
+                            otherPos?.specificationsSplit?.filter { it.specification == specSplit.specification }
+                                ?.sumOf { it.amount } ?: BigDecimal.ZERO
+                        }
+                        if (amount > BigDecimal.ZERO) {
                             wbPos.specificationsSplit.add(WaybillSpecificationSplit().also {
                                 it.amount = amount
                                 it.specification = specSplit.specification
                             })
-                            remains -= amount
                         }
+                        remains -= amount
                     }
-                }
 
+                    wbPos.storeAmount = wbPos.amount.subtract(wbPos.specificationsSplit.sumOf { it.amount })
+                }
             }
         }
     }
 
-    private fun <D:BaseDocument> calculateAmount(remains: BigDecimal, amount: BigDecimal, specification: ObjectReference<Specification>, relatedWaybills: List<Waybill>, context: OperationContext<D>): BigDecimal {
-        if(remains <= BigDecimal.ZERO){
-            return BigDecimal.ZERO
-        }
-        var relatedValue = relatedWaybills.sumOf { it.positions.sumOf { it.specificationsSplit.sumOf { if(it.specification == specification) it.amount else BigDecimal.ZERO } } }?: BigDecimal.ZERO
-        val max = amount -relatedValue
-        return if(max >= remains) remains else max
-    }
 
-    private fun <D:BaseDocument> unholdEntities(waybill: Waybill, context: OperationContext<D>) {
+    private fun <D : BaseDocument> unholdEntities(waybill: Waybill, context: OperationContext<D>) {
         val relatedWaybills = Storage.get().searchDocuments(WaybillIndex::class, searchQuery {
-            where { eq(WaybillIndex.invoiceProperty, waybill.invoice)
-            ne(BaseIndex.documentField, EntityUtils.toReference(waybill))}
-        }).map { SpecificationUtils.getOrLoad(it.document, context) !!}
+            where {
+                eq(WaybillIndex.invoiceProperty, waybill.invoice)
+                ne(BaseIndex.documentField, EntityUtils.toReference(waybill))
+            }
+        }).map { SpecificationUtils.getOrLoad(it.document, context)!! }
         val invoice = SpecificationUtils.getOrLoad(waybill.invoice, context)!!
-        if(!relatedWaybills.any { it.status == WaybillStatus.FIXED }){
+        invoice.waybills.remove(EntityUtils.toReference(waybill))
+        if (!relatedWaybills.any { it.status == WaybillStatus.FIXED }) {
             invoice.status = InvoiceStatus.DRAFT
             Storage.get().saveDocument(invoice)
         }
         invoice.positions.forEach { pos ->
             val surplus = SpecificationUtils.getOrLoad(pos.surplus, context)
-            if(surplus != null){
-                if(waybill.positions.any { it.article == surplus.article }) {
+            if (surplus != null) {
+                if (waybill.positions.any { it.article == surplus.article }) {
                     val stillHold =
                         relatedWaybills.any { it.status == WaybillStatus.FIXED && it.positions.any { it.article == surplus.article } }
                     if (!stillHold) {
@@ -103,13 +92,15 @@ class WaybillInterceptor : StorageInterceptor {
         }
         waybill.positions.forEach { pos ->
             pos.specificationsSplit.clear()
+            pos.storeAmount = pos.amount
         }
+
 
     }
 
     override fun <D : BaseDocument> onDelete(doc: D, context: OperationContext<D>) {
         if (context.globalContext.newObject == doc && doc is Waybill) {
-              unholdEntities(doc, context)
+            unholdEntities(doc, context)
         }
     }
 

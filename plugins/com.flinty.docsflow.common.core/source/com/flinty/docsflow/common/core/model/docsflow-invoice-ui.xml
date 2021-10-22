@@ -15,6 +15,7 @@
             <action id="docsflow.core.invoice.importStandard" action-handler="com.flinty.docsflow.web.core.invoice.ImportStandardInvoiceEditorObjectButtonHandler" display-handler-ref="edit-state-handler"/>
             <action id="docsflow.core.invoice.importSchneider" action-handler="com.flinty.docsflow.web.core.invoice.ImportSchneiderInvoiceEditorObjectButtonHandler" display-handler-ref="edit-state-handler"/>
         </group>
+        <action id="docsflow.core.invoice.createWaybill" action-handler="com.flinty.docsflow.web.core.invoice.CreateWaybillEditorObjectButtonHandler" display-handler-ref="edit-state-handler"/>
         <group id="docsflow.core.invoice.additional">
             <action-ref id="standard.showVersions"/>
         </group>
@@ -27,14 +28,14 @@
             <column width="CUSTOM" custom-width="200px"/>
         </columns>
         <row>
-            <cell id="name" caption="name" col-span="4">
+            <cell id="article" caption="article">
+                <text-box not-editable="true"/>
+            </cell>
+            <cell id="name" caption="name" col-span="3">
                 <text-box not-editable="true"/>
             </cell>
         </row>
         <row>
-            <cell id="article" caption="article">
-                <text-box not-editable="true"/>
-            </cell>
             <cell id="orderAmount" caption="orderAmount">
                 <big-decimal-number-box not-editable="true"   precision="10"/>
             </cell>
@@ -43,6 +44,9 @@
             </cell>
             <cell id="unit" caption="unit">
                 <enum-select-box enumId="com.flinty.docsflow.common.core.model.domain.PositionUnit" not-editable="true"/>
+            </cell>
+            <cell id="deliveryDate" caption="deliveryDate">
+                <date-box/>
             </cell>
         </row>
         <row>
@@ -68,7 +72,18 @@
                 </table-box>
             </cell>
         </row>
-
+        <row>
+            <cell id="specificationSplits" col-span="4" caption="specificationSplits">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.InvoiceSpecificationSplit" hide-tools-column="true" not-editable="true">
+                    <column id="specification" caption="specification">
+                        <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Specification" not-editable="true"/>
+                    </column>
+                    <column id="amount" caption="amount">
+                        <big-decimal-number-box precision="10" not-editable="true"/>
+                    </column>
+                </table-box>
+            </cell>
+        </row>
     </grid-container>
     <custom-value-widget id="com.flinty.docsflow.web.core.invoice.InvoiceItemsTableEditor">
         <view-model>
@@ -101,6 +116,15 @@
             </cell>
             <cell id="vatIncluded" caption="vatIncluded">
                 <boolean-box/>
+            </cell>
+        </row>
+        <row>
+            <cell id="waybills" col-span="2" caption="waybills">
+                <table-box id="com.flinty.docsflow.common.core.model.ui.InvoiceWaybillSplit" hide-tools-column="true" not-editable="true">
+                    <column id="waybill" caption="waybill">
+                        <entity-select-box objectId="com.flinty.docsflow.common.core.model.domain.Waybill" not-editable="true"/>
+                    </column>
+                </table-box>
             </cell>
         </row>
         <row height="REMAINING">

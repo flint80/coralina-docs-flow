@@ -29,12 +29,16 @@ object StandardSpecificationParser{
         var lastSupplier:String? = null
         val result = arrayListOf<ParsedSpecificationPosition>()
         var sectionStarted = false
+        val articles = hashSetOf<String>()
         for(idx in 0..specSheet.lastRowNum){
             val toBeOrdered = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("I"), 5,true)
             val supplier = ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("A"), false)?:lastSupplier
             lastSupplier = supplier
             val name = ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("B"), false)
             val article = ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("C"), false)
+            if(article != null && !articles.add(article!!)){
+                throw Xeption.forEndUser(L10nMessage("найдено несколько позиций с артикулом $article"))
+            }
             val amount = ExcelUtils.getNumberValue(specSheet, idx, ExcelUtils.getCellIndex("D"), 5,true)
             val unit = if(toBeOrdered!= null) ExcelUtils.getStringValue(specSheet, idx, ExcelUtils.getCellIndex("E"), false)?.let {
                 SpecParcerUtils.getUnit(it)

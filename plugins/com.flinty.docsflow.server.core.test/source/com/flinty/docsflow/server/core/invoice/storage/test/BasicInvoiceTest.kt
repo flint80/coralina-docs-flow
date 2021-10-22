@@ -96,6 +96,19 @@ class BasicInvoiceTest : DocsFlowServerTestBase() {
             Assert.assertEquals(order2Ref, split.order)
             assertEquals(1, split.amount)
         }
+        run{
+            Assert.assertEquals(2, invoice.positions[0].specificationSplits.size)
+            run{
+                val split = invoice.positions[0].specificationSplits[0]
+                Assert.assertEquals(EntityUtils.toReference(spec1), split.specification)
+                assertEquals(1, split.amount)
+            }
+            run{
+                val split = invoice.positions[0].specificationSplits[1]
+                Assert.assertEquals(EntityUtils.toReference(spec2), split.specification)
+                assertEquals(1, split.amount)
+            }
+        }
         invoice = Storage.get().loadDocument(invoiceRef)!!
         invoice.status = InvoiceStatus.DRAFT
         Storage.get().saveDocument(invoice)

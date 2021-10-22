@@ -4,8 +4,6 @@
  *****************************************************************/
 package com.flinty.docsflow.web.core.activator
 
-import com.flinty.docsflow.common.core.model.ui.InvoiceEditor
-import com.flinty.docsflow.common.core.model.ui.OrderEditor
 import com.flinty.docsflow.web.core.DomainReflectionUtilsJS
 import com.flinty.docsflow.web.core.RestReflectionUtilsJS
 import com.flinty.docsflow.web.core.UiReflectionUtilsJS
@@ -14,7 +12,9 @@ import com.flinty.docsflow.web.core.order.OrderEditorHandler
 import com.flinty.docsflow.web.core.project.ProjectEditorHandler
 import com.flinty.docsflow.web.core.spec.SpecificationEditorHandler
 import com.flinty.docsflow.web.core.supplier.SupplierEditorHandler
+import com.flinty.docsflow.web.core.surplus.SurplusEditorHandler
 import com.flinty.docsflow.web.core.userAccount.UserAccountEditorHandler
+import com.flinty.docsflow.web.core.waybill.WaybillEditorHandler
 import com.gridnine.jasmine.common.standard.model.rest.GetWorkspaceRequestJS
 import com.gridnine.jasmine.web.core.common.ActivatorJS
 import com.gridnine.jasmine.web.core.common.EnvironmentJS
@@ -76,6 +76,8 @@ class WebDocsFlowCoreActivator : ActivatorJS {
         RegistryJS.get().register(SpecificationEditorHandler())
         RegistryJS.get().register(OrderEditorHandler())
         RegistryJS.get().register(InvoiceEditorHandler())
+        RegistryJS.get().register(SurplusEditorHandler())
+        RegistryJS.get().register(WaybillEditorHandler())
         console.log("docsflow core module activated")
     }
 

@@ -22,11 +22,13 @@ import com.flinty.docsflow.server.core.supplier.storage.SupplierIndexHandler
 import com.flinty.docsflow.server.core.supplier.storage.SupplierSpellVariantsIndexHandler
 import com.flinty.docsflow.server.core.supplier.ui.SupplierEditorHandler
 import com.flinty.docsflow.server.core.surplus.storage.SurplusIndexHandler
+import com.flinty.docsflow.server.core.surplus.ui.SurplusEditorHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountIndexHandler
 import com.flinty.docsflow.server.core.userAccount.storage.UserAccountStorageInterceptor
 import com.flinty.docsflow.server.core.userAccount.ui.UserAccountEditorHandler
 import com.flinty.docsflow.server.core.waybill.storage.WaybillIndexHandler
 import com.flinty.docsflow.server.core.waybill.storage.WaybillInterceptor
+import com.flinty.docsflow.server.core.waybill.ui.WaybillEditorHandler
 import com.flinty.docsflow.server.core.web.DocsFlowAuthFilter
 import com.flinty.docsflow.server.core.workspace.storage.DocsFlowWorkspaceProvider
 import com.gridnine.jasmine.common.core.app.Environment
@@ -63,7 +65,6 @@ class DocsFlowServerCoreActivator:IPluginActivator {
         WebServerConfig.get().globalFilters.add(WebAppFilter("kotlin-dev-filter", KotlinFileDevFilter::class))
         WebServerConfig.get().globalFilters.add(WebAppFilter("exception-filter", ExceptionFilter::class))
         WebServerConfig.get().globalFilters.add(WebAppFilter("auth-filter", DocsFlowAuthFilter::class))
-        StorageRegistry.get().register(SupplierIndexHandler())
         StorageRegistry.get().register(SupplierSpellVariantsIndexHandler())
 
         StorageRegistry.get().register(UserAccountIndexHandler())
@@ -87,6 +88,8 @@ class DocsFlowServerCoreActivator:IPluginActivator {
         ObjectEditorsRegistry.get().register(SpecificationEditorHandler())
         ObjectEditorsRegistry.get().register(OrderEditorHandler())
         ObjectEditorsRegistry.get().register(InvoiceEditorHandler())
+        ObjectEditorsRegistry.get().register(SurplusEditorHandler())
+        ObjectEditorsRegistry.get().register(WaybillEditorHandler())
         Environment.publish(WorkspaceProvider::class, DocsFlowWorkspaceProvider())
     }
     private fun addApp(context: String, res: String, file: String) {

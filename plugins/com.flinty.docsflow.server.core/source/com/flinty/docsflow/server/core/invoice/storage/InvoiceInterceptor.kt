@@ -20,7 +20,11 @@ class InvoiceInterceptor : StorageInterceptor {
         if (context.globalContext.newObject == doc && doc is Invoice) {
             val oldInvoice = context.globalContext.oldObject as Invoice?
             if (oldInvoice?.status == InvoiceStatus.FIXED && doc.status != InvoiceStatus.FIXED) {
+                if(doc.waybills.isNotEmpty()){
+                    throw Xeption.forEndUser(L10nMessage("к счету прикреплены накладные"))
+                }
                 deleteSurpluses(doc, context)
+                doc.positions.forEach { it.specificationSplits.clear() }
             } else if (oldInvoice?.status != InvoiceStatus.FIXED && doc.status == InvoiceStatus.FIXED) {
                 val modifiedOrders = hashSetOf<SpecificationOrder>()
                 val currentOrder = SpecificationUtils.getOrLoad(doc.order, context)!!
@@ -71,6 +75,7 @@ class InvoiceInterceptor : StorageInterceptor {
                         }
                         Storage.get().saveDocument(surplus)
                     }
+                    updateSpecificationSplits(doc, ip, context)
                 }
                 modifiedOrders.forEach {
                     Storage.get().saveDocument(it)
@@ -79,8 +84,14 @@ class InvoiceInterceptor : StorageInterceptor {
         }
     }
 
+
+
+
     override fun <D : BaseDocument> onDelete(doc: D, context: OperationContext<D>) {
         if (doc is Invoice) {
+            if(doc.waybills.isNotEmpty()){
+                throw Xeption.forEndUser(L10nMessage("к счету прикреплены накладные"))
+            }
             if (doc.status == InvoiceStatus.FIXED) {
                 deleteSurpluses(doc, context)
             }
@@ -128,5 +139,56 @@ class InvoiceInterceptor : StorageInterceptor {
         modifiedOrders.forEach { Storage.get().saveDocument(it) }
     }
 
+    companion object{
+        fun <D:BaseDocument> updateSpecificationSplits(doc: Invoice, ip: InvoicePosition, context: OperationContext<D>) {
+            ip.specificationSplits.clear()
+            if(ip.invoiceAmount == null){
+                return
+            }
+            var remains = ip.invoiceAmount!!.subtract(ip.surplusSplits.sumOf { it.amount })
+            var order = SpecificationUtils.getOrLoad(doc.order, context)!!
+            var orderPos = order.positions.find { it.article == ip.article }
+            orderPos?.specificationSplits?.forEach { specSplit->
+                val amount = calculateAmount(remains, doc, ip, specSplit, context)
+                if(amount > BigDecimal.ZERO){
+                    ip.specificationSplits.add(InvoiceSpecificationSplit().also {
+                        it.amount = amount
+                        it.specification = specSplit.specification
+                    })
+                    remains -= amount
+                }
+            }
+            remains+=ip.surplusSplits.sumOf { it.amount }
+            ip.surplusSplits.forEach { surpSplit ->
+                val max = if(remains > surpSplit.amount) surpSplit.amount else remains
+                order = SpecificationUtils.getOrLoad(surpSplit.order, context)!!
+                orderPos = order.positions.find { it.article == ip.article }
+                orderPos?.specificationSplits?.forEach { specSplit->
+                    val amount = calculateAmount(max, doc,  ip, specSplit, context)
+                    if(amount > BigDecimal.ZERO){
+                        ip.specificationSplits.add(InvoiceSpecificationSplit().also {
+                            it.amount = amount
+                            it.specification = specSplit.specification
+                        })
+                        remains -= amount
+                    }
+                }
+            }
+        }
+
+        private fun <D:BaseDocument> calculateAmount(remains: BigDecimal, doc:Invoice, ip: InvoicePosition, specSplit: OrderSpecificationSplit, context: OperationContext<D>): BigDecimal {
+            var amount = if(remains>specSplit.amount) specSplit.amount else remains
+            val order = SpecificationUtils.getOrLoad(doc.order, context)!!
+            val pos = order.positions.find { ip.article == it.article }
+            val otherInvoices = pos?.surplusSplits?.map { surpSplit ->
+                SpecificationUtils.getOrLoad(surpSplit.surplus, context)!!.invoice
+            }?.distinct()?.map { SpecificationUtils.getOrLoad(it, context)!! }?: emptyList()
+            amount -= otherInvoices.sumOf { inv ->
+                val otherPos = inv.positions.find { it.article == ip.article }
+                otherPos?.specificationSplits?.sumOf { it.amount } ?: BigDecimal.ZERO
+            }
+            return amount
+        }
+    }
 
 }
