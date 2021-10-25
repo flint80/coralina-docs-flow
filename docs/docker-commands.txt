@@ -1,0 +1,20 @@
+создаем директорию docsflow
+внутри postgres и application
+docker run --name=df-postgres -i -t -d -e TERM=xterm -p 15432:5432 -v /home/vova/programs/docsflow/postgres:/db  ubuntu_ru_img
+docker exec -t -i df-postgres bash
+
+sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt focal-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+postgres: docsflow-user/123456
+
+docker run --name=df-postgres -i -t -d -e TERM=xterm -p 15432:5432 -v /home/vova/programs/docsflow/postgres:/db  ubuntu_ru_img
+
+docker run --name=df-postgres --network docsflow-net -d -t -i -e TERM=xterm -p 15432:5432 -v /home/vova/programs/docsflow/postgres/data:/var/lib/postgresql/14/main -v /home/vova/programs/docsflow/postgres/log:/var/log/postgresql -v /home/vova/programs/docsflow/postgres/config:/etc/postgresql/14/main df-postgres
+
+chown -R postgres:postgres /var/log/postgresql
+chown -R postgres:postgres /etc/postgresql
+chown -R postgres:postgres /var/lib/postgresql
+chmod -R 0700 /var/lib/postgresql
+chmod -R 0700 /etc/postgresql
+
+docker run --name=df-app  --network docsflow-net -i -t -d -e TERM=xterm -p 8443:8443 -p 8001:8001 -p 18002:8002 -p 18003:8003 -v /home/vova/programs/docsflow/application:/docsflow ubuntu_ru_img

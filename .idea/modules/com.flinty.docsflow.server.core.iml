@@ -17,7 +17,6 @@
       <orderEntry type="module" module-name="com.gridnine.jasmine.server.standard"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.common.reports"/>
       <orderEntry type="module" module-name="com.gridnine.jasmine.server.reports"/>
-      <orderEntry type="module" module-name="com.gridnine.jasmine.common.core.test"/>
       <orderEntry type="module" module-name="com.flinty.docsflow.common.core"/>
    </component>
 </module>

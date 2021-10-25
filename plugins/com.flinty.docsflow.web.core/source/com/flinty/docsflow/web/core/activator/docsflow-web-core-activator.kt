@@ -16,6 +16,8 @@ import com.flinty.docsflow.web.core.surplus.SurplusEditorHandler
 import com.flinty.docsflow.web.core.userAccount.UserAccountEditorHandler
 import com.flinty.docsflow.web.core.waybill.WaybillEditorHandler
 import com.gridnine.jasmine.common.standard.model.rest.GetWorkspaceRequestJS
+import com.gridnine.jasmine.web.antd.activator.antdMain
+import com.gridnine.jasmine.web.core.activator.coreMain
 import com.gridnine.jasmine.web.core.common.ActivatorJS
 import com.gridnine.jasmine.web.core.common.EnvironmentJS
 import com.gridnine.jasmine.web.core.common.RegistryJS
@@ -24,8 +26,10 @@ import com.gridnine.jasmine.web.core.remote.launch
 import com.gridnine.jasmine.web.core.ui.WebUiLibraryAdapter
 import com.gridnine.jasmine.web.core.ui.components.SimpleActionHandler
 import com.gridnine.jasmine.web.core.ui.components.WebTabsContainerTool
+import com.gridnine.jasmine.web.reports.activator.reportsMain
 import com.gridnine.jasmine.web.standard.ActionsIds
 import com.gridnine.jasmine.web.standard.StandardRestClient
+import com.gridnine.jasmine.web.standard.activator.standardMain
 import com.gridnine.jasmine.web.standard.mainframe.ActionWrapper
 import com.gridnine.jasmine.web.standard.mainframe.MainFrame
 import com.gridnine.jasmine.web.standard.mainframe.WebActionsHandler
@@ -35,6 +39,12 @@ const val pluginId = "com.flinty.docsflow.web.core"
 
 
 fun main() {
+    if(window.asDynamic().builtByWebpack == true){
+        coreMain()
+        standardMain()
+        antdMain()
+        reportsMain()
+    }
     EnvironmentJS.restBaseUrl = "/ui-rest"
     RegistryJS.get().register(WebDocsFlowCoreActivator())
     if(window.asDynamic().testMode as Boolean? == true){

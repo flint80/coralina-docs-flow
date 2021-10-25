@@ -1,0 +1,34 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          docsflow
+# Required-Start:    $network $local_fs $remote_fs
+# Required-Stop:     $network $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Docsflow application
+# Description:  Docsflow application
+### END INIT INFO
+
+case "$1" in
+  start)
+    echo "starting docsflow"
+    sudo docker start df-postgres
+    sudo docker exec df-postgres /etc/init.d/postgresql start
+    exit 0
+    ;;
+  stop)
+    echo "stopping docsflow"
+    sudo docker exec df-postgres /etc/init.d/postgresql stop
+    sudo docker stop df-postgres
+    exit 0
+    ;;
+  term-postgres)
+    echo "starting terminal for df-postgres"
+    sudo docker exec -t -i df-postgres bash
+    exit 0
+    ;;
+esac
+
+echo "unknown command $1"
+exit 1

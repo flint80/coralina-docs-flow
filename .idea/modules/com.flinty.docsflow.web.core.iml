@@ -27,5 +27,6 @@
     <orderEntry type="module" module-name="com.gridnine.jasmine.web.core" />
     <orderEntry type="module" module-name="com.gridnine.jasmine.web.standard" />
     <orderEntry type="module" module-name="com.gridnine.jasmine.web.antd" />
+    <orderEntry type="module" module-name="com.gridnine.jasmine.web.reports" />
   </component>
 </module>

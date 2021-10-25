@@ -49,7 +49,7 @@ import java.util.*
 
 class DocsFlowServerCoreActivator:IPluginActivator {
     override fun configure(config: Properties) {
-        addApp("","docsflow-index","lib/docsflow-index")
+        addApp("","docsflow-index","lib/docsflow-index.war")
         WebPluginsAssociationsRegistry.get().links["com.gridnine.jasmine.web.core"] = "/jasmine-core/com.gridnine.jasmine.web.core.js"
         WebPluginsAssociationsRegistry.get().links["com.gridnine.jasmine.web.easyui"] = "/jasmine-easyui/com.gridnine.jasmine.web.easyui.js"
         WebPluginsAssociationsRegistry.get().links["com.gridnine.jasmine.web.standard"] = "/jasmine-standard/com.gridnine.jasmine.web.standard.js"

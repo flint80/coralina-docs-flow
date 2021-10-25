@@ -1,5 +1,6 @@
 import com.gridnine.jasmine.gradle.plugin.jasmine
 
+
 buildscript {
     dependencies{
         "classpath"(files("submodules/jasmine/lib/spf-1.0.jar"))
@@ -19,6 +20,7 @@ jasmine {
     kotlinCoroutinesJSVersion ="1.4.3"
     libRelativePath = "submodules/jasmine/lib"
     enableWebTasks = true
+    indexWar = "docsflow-index.war"
     plugins("submodules/jasmine/plugins") {
         plugin("com.gridnine.jasmine.common.core")
         plugin("com.gridnine.jasmine.common.spf")
@@ -54,12 +56,12 @@ repositories{
 apply<com.gridnine.jasmine.gradle.plugin.JasminePlugin>()
 
 
-// task("deploy-locally", DeployApplicationTask::class){
-//     group = "jenkins"
-//     shouldRunAfter("jenkins-dist")
-//     host = "localhost"
-//     port = 21567
-// }
+task("deploy-smart-home", com.gridnine.jasmine.gradle.plugin.tasks.DeployApplicationTask::class){
+    group = "jenkins"
+    shouldRunAfter("jenkins-dist")
+    host = "192.168.1.42"
+    port = 18002
+ }
 
 
 //tasks.create("deploy-test", Deplo)
