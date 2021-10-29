@@ -39,15 +39,13 @@ const val pluginId = "com.flinty.docsflow.web.core"
 
 
 fun main() {
-    if(window.asDynamic().builtByWebpack == true){
-        coreMain()
-        standardMain()
-        antdMain()
-        reportsMain()
-    }
+    coreMain()
+    standardMain()
+    antdMain()
+    reportsMain()
     EnvironmentJS.restBaseUrl = "/ui-rest"
     RegistryJS.get().register(WebDocsFlowCoreActivator())
-    if(window.asDynamic().testMode as Boolean? == true){
+    if (window.asDynamic().testMode as Boolean? == true) {
         return
     }
     launch {

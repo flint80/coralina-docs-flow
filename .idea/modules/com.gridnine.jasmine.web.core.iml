@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="FacetManager">
-    <facet type="kotlin-language" name="Kotlin">
-      <configuration version="4" platform="JavaScript " allPlatforms="JS []" useProjectSettings="false" isTestModule="false" pureKotlinSourceFolders="$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/source">
-        <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
-        <compilerSettings />
-        <compilerArguments>
-          <option name="sourceMap" value="true" />
-          <option name="sourceMapEmbedSources" value="always" />
-          <option name="moduleKind" value="umd" />
-        </compilerArguments>
-      </configuration>
-    </facet>
-  </component>
-  <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/resources/jasmine-core" />
-    <output-test url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/resources/jasmine-core" />
-    <content url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core">
-      <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/source" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/resources/jasmine-core" />
-    </content>
-    <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="library" name="web_js" level="project" />
-  </component>
+   <component name="FacetManager">
+      <facet type="kotlin-language" name="Kotlin">
+         <configuration version="4" platform="JavaScript " allPlatforms="JS []" useProjectSettings="false" isTestModule="false" pureKotlinSourceFolders="$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/source">
+            <newMppModelJpsModuleKind>
+               COMPILATION_AND_SOURCE_SET_HOLDER
+            </newMppModelJpsModuleKind>
+         </configuration>
+      </facet>
+   </component>
+   <compilerSettings/>
+   <compilerArguments>
+      <option name="outputFile" value="$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/resources/jasmine-core/com.gridnine.jasmine.web.core.js"/>
+      <option name="noStdlib" value="true"/>
+      <option name="sourceMap" value="true"/>
+      <option name="metaInfo" value="true"/>
+      <option name="target" value="v5"/>
+      <option name="moduleKind" value="umd"/>
+      <option name="main" value="call"/>
+      <option name="languageVersion" value="1.4"/>
+      <option name="apiVersion" value="1.4"/>
+      <pluginOptions>
+         <array/>
+      </pluginOptions>
+      <pluginClasspaths>
+         <array/>
+      </pluginClasspaths>
+      <option name="multiPlatform" value="true"/>
+      <errors>
+         <ArgumentParseErrors/>
+      </errors>
+   </compilerArguments>
+   <component name="NewModuleRootManager">
+      <output url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/resources/jasmine-core"/>
+      <output-test url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/resources/jasmine-core"/>
+      <content url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core">
+         <sourceFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/source" isTestSource="false"/>
+         <excludeFolder url="file://$MODULE_DIR$/../../submodules/jasmine/plugins/com.gridnine.jasmine.web.core/resources/jasmine-core"/>
+      </content>
+      <orderEntry type="sourceFolder" forTests="false"/>
+      <orderEntry type="inheritedJdk"/>
+      <orderEntry type="library" name="web_js" level="project"/>
+   </component>
 </module>
